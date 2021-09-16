@@ -1,11 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import FormSignup from '../../components/form/formSignup';
+import FormSucess from '../../components/form/formSucess';
+import './register.css';
 
 export default function Register() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  function submitForm() {
+    setIsSubmitted(true);
+  }
   return (
     <>
-      <h1>Cadastro</h1>
-      <Link to="/">voltar para o login</Link>
+      {!isSubmitted ? <FormSignup submitForm={submitForm} /> : (<FormSucess />)}
     </>
   );
 }
