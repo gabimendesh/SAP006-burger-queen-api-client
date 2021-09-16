@@ -2,8 +2,7 @@ import React from 'react';
 import Button from '../button';
 import styles from './style.module.css';
 
-export default function FormSignIn(props) {
-  console.log(props);
+export default function FormSignIn() {
   return (
     <form className={styles.box}>
       <p className={styles.subTitle}>
