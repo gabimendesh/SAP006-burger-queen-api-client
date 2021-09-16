@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+@media (max-width: 1720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+:root {
+  --white: #e5e5e5;
+
+  --dark-gray: #1f1d2b;
+  --medium-gray: #393939;
+  --light-gray: #625e5e;
+  --medium-seagreen: #03a678;
+  --dark-pink: #f25764;
+  --light-pink: #ff7ca3;
+  --medium-purple: #9290fe;
+}
+
+body {
+  background: var(--dark-gray);
+  height: 100vh;
+}
+
+body,
+input,
+button {
+  font: 600 1rem Barlow, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+h1 {
+  font-size: 5rem;
+  color: var(--dark-pink);
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,19 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Routes from './routes';
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <div>
-      <p> Você clicou {count} vezes </p>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        Somar
-      </button>
-      <button type="button" onClick={() => setCount(count - 1)}>
-        Subtrair
-      </button>
-    </div>
+    <Routes />
   );
 }
-
-export default Counter;

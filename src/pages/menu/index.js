@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function Menu() {
   return (
     <>
-      <h1>Login</h1>
-      <Link to="/cadastro">cadastro</Link>
+      <h1>Menu</h1>
+      <Link to="/">Logout</Link>
     </>
   );
 }

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import validate from '../../validateInfo';
@@ -15,8 +14,8 @@ const FormSignup = ({ submitForm }) => {
           Cadastre-se
         </h1>
         <div className="form-inputs">
-          <label className="form-label">Nome</label>
           <input
+            id="username"
             className="form-input"
             type="text"
             name="username"
@@ -27,7 +26,6 @@ const FormSignup = ({ submitForm }) => {
           {errors.username && <p>{errors.username}</p>}
         </div>
         <div className="form-inputs">
-          <label className="form-label">Email</label>
           <input
             className="form-input"
             type="email"
@@ -39,7 +37,6 @@ const FormSignup = ({ submitForm }) => {
           {errors.email && <p>{errors.email}</p>}
         </div>
         <div className="form-inputs">
-          <label className="form-label">Senha</label>
           <input
             className="form-input"
             type="password"
@@ -51,7 +48,6 @@ const FormSignup = ({ submitForm }) => {
           {errors.password && <p>{errors.password}</p>}
         </div>
         <div className="form-inputs">
-          <label className="form-label">Confirme senha</label>
           <input
             className="form-input"
             type="password"

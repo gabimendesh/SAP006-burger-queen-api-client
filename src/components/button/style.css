@@ -1,0 +1,19 @@
+.button {
+  width: 32rem;
+  height: 4.75rem;
+  border-radius: 2.625rem;
+  background: var(--medium-seagreen);
+  font-size: 2rem;
+
+  color: white;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+}
+
+.primary {
+  width: 16.875rem;
+}
