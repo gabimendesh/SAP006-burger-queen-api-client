@@ -1,7 +1,14 @@
 .logoArea {
   display: flex;
   justify-content: center;
-  margin: 6rem;
+  margin: 4rem;
+}
+
+.formArea {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer {
@@ -15,4 +22,16 @@
   font-weight: 600;
   text-align: center;
   margin-top: 5.5rem;
+}
+
+a {
+  width: 32rem;
+  height: 4.75rem;
+  text-decoration: none;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
 }

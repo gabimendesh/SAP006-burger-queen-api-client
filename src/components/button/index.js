@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './style.css';
 
 export default function Button(props) {
@@ -8,9 +7,9 @@ export default function Button(props) {
 
   return (
     <>
-      <Link to="/cadastro" className={classes}>
+      <button type="submit" className={classes}>
         {children}
-      </Link>
+      </button>
     </>
   );
 }

@@ -29,9 +29,12 @@
   --medium-purple: #9290fe;
 }
 
-body {
+body,
+html {
   background: var(--dark-gray);
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 body,
