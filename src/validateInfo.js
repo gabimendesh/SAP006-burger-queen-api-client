@@ -16,7 +16,7 @@ export default function validateInfo(values) {
   }
 
   if (!values.password2) {
-    errors.password2 = 'Informe uma senha';
+    errors.password2 = 'Confirme sua senha';
   } else if (values.password2 !== values.password) {
     errors.password2 = 'Senhas incompatíveis';
   }

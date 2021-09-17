@@ -5,9 +5,8 @@ import './register.css';
 
 export default function Register() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const submitForm = () => {
-    setIsSubmitted(true);
-  };
+  const submitForm = () => setIsSubmitted(true);
+
   return (
     <>
       {!isSubmitted ? <FormSignup submitForm={submitForm} /> : (<FormSucess />)}
