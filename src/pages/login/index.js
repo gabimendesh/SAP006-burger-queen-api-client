@@ -6,20 +6,6 @@ import FormSignIn from '../../components/forms/signIn';
 import Button from '../../components/button';
 
 export default function Login() {
-  React.useEffect(() => {
-    fetch('https://lab-api-bq.herokuapp.com/users', {
-      method: 'GET',
-      headers: {
-        Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYmlAZ21haWwuY29tIiwiaWQiOjIyMTYsImlhdCI6MTYzMTgzMjc3MCwiZXhwIjoxNjYzMzkwMzcwfQ.rqKTW88nG-z8jhY4hjQ7FKf-Ryb0O7cnVlTHEw5AmBM',
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((responseDone) => {
-        console.log('Pessoas cadastradas =>', responseDone);
-      });
-  }, []);
   return (
     <>
       <section className={styles.logoArea}>
