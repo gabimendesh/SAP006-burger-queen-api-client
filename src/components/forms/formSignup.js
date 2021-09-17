@@ -10,60 +10,65 @@ const FormSignup = ({ submitForm }) => {
   return (
     <div className="form-content-right">
       <form className="form" onSubmit={handleSubmit}>
-        <h1>
-          Cadastre-se
+        <h1 className="register">
+          Crie sua conta
         </h1>
-        <div className="form-inputs">
-          <input
-            id="username"
-            className="form-input"
-            type="text"
-            name="username"
-            placeholder="Enter your username"
-            value={values.username}
-            onChange={handleChange}
-          />
-          {errors.username && <p>{errors.username}</p>}
-        </div>
-        <div className="form-inputs">
-          <input
-            className="form-input"
-            type="email"
-            name="email"
-            placeholder="Enter your username"
-            value={values.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
-        </div>
-        <div className="form-inputs">
-          <input
-            className="form-input"
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          {errors.password && <p>{errors.password}</p>}
-        </div>
-        <div className="form-inputs">
-          <input
-            className="form-input"
-            type="password"
-            name="password2"
-            placeholder="Confirme sua senha"
-            value={values.password2}
-            onChange={handleChange}
-          />
-          {errors.password2 && <p>{errors.password2}</p>}
-        </div>
-        <button className="form-input-btn" type="submit">
-          Sign up
+        <input
+          className="form-input"
+          type="text"
+          name="username"
+          placeholder="Digite seu nome"
+          value={values.username}
+          onChange={handleChange}
+        />
+        <p className="error">
+          {errors.username}
+        </p>
+        <input
+          className="form-input"
+          type="email"
+          name="email"
+          placeholder="Digite seu email"
+          value={values.email}
+          onChange={handleChange}
+        />
+        <p className="error">
+          {errors.email}
+        </p>
+        <input
+          className="form-input"
+          type="password"
+          name="password"
+          placeholder="Digite sua senha"
+          value={values.password}
+          onChange={handleChange}
+        />
+        <p className="error">
+          {errors.password}
+        </p>
+        <input
+          className="form-input"
+          type="password"
+          name="password2"
+          placeholder="Confirme sua senha"
+          value={values.password2}
+          onChange={handleChange}
+        />
+        <p className="error">
+          {errors.password2}
+        </p>
+        <select name="select" id="select" className="select">
+          <option selected disabled>Cargo</option>
+          <option value="cozinheiro">Cozinheiro</option>
+          <option value="garçom">Garçom</option>
+        </select>
+        <button className="btn-register" type="submit">
+          Cadastre-se
         </button>
-        <span className="form-input-login">
-          Ja tem conta? <Link to="/">Faça login</Link>
+        <span className="link-login">
+          Ja tem conta?
         </span>
+        <Link to="/"> Faça login</Link>
       </form>
     </div>
   );

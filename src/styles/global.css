@@ -18,8 +18,7 @@
 }
 
 :root {
-  --white: #e5e5e5;
-
+  --white: #ffffff;
   --dark-gray: #1f1d2b;
   --medium-gray: #393939;
   --light-gray: #625e5e;
@@ -36,9 +35,11 @@ body {
 
 body,
 input,
-button {
+button,
+select {
   font: 600 1rem Barlow, sans-serif;
 }
+
 
 h1,
 h2,
