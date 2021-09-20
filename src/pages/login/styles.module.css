@@ -23,7 +23,7 @@
   margin-top: 5.5rem;
 }
 
-a {
+.link-register {
   width: 32rem;
   height: 4.75rem;
   text-decoration: none;
@@ -33,7 +33,4 @@ a {
   justify-content: center;
   text-decoration: none;
   align-items: center;
-}
-
-.logo {
 }

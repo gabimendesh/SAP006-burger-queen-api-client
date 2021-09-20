@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import FormSignup from '../../components/forms/formSignup';
 import FormSucess from '../../components/forms/formSucess';
-import './register.css';
+import Title from '../../images/Title.png';
+import styles from './style.module.css';
 
 export default function Register() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -9,6 +10,9 @@ export default function Register() {
 
   return (
     <>
+      <section className={styles.logoArea}>
+        <img src={Title} alt="The emo's burger" className="logo-img" />
+      </section>
       {!isSubmitted ? <FormSignup submitForm={submitForm} /> : (<FormSucess />)}
     </>
   );

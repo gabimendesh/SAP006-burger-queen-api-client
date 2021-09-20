@@ -20,7 +20,7 @@ export default function Login() {
               <p>
                 O funcionário ainda não é cadastrado? <br />
                 <Button variant="secondary">
-                  <Link to="/cadastro">
+                  <Link to="/cadastro" className={styles['link-register']}>
                     Cadastrar
                   </Link>
                 </Button>
