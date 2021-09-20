@@ -16,7 +16,7 @@ export default function FormSignIn({ submitForm }) {
       <input
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder="Digite o seu email"
         className={styles.inputBox}
         value={values.email}
         onChange={handleChange}
@@ -27,7 +27,7 @@ export default function FormSignIn({ submitForm }) {
       <input
         type="password"
         name="password"
-        placeholder="Senha"
+        placeholder="Digite a sua senha"
         className={styles.inputBox}
         value={values.password}
         onChange={handleChange}

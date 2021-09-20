@@ -7,6 +7,7 @@ const useForm = (callback, validate) => {
     password: '',
     password2: '',
   });
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,6 +25,7 @@ const useForm = (callback, validate) => {
     setErrors(validate(values));
     setIsSubmitting(true);
   };
+
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {

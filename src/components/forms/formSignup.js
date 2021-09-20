@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import validate from '../../validateInfo';
 import useForm from '../../useForm';
+import styles from './style.module.css';
 
 const FormSignup = ({ submitForm }) => {
   const {
@@ -68,7 +69,7 @@ const FormSignup = ({ submitForm }) => {
         <span className="link-login">
           Ja tem conta?
         </span>
-        <Link to="/"> Faça login</Link>
+        <Link to="/" className={styles['link-login']}>Faça login</Link>
       </form>
     </div>
   );

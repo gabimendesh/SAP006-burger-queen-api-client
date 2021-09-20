@@ -1,7 +1,7 @@
 .box {
   background: white;
   width: 30rem;
-  height: 28.75rem;
+  height: 26.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,26 +10,28 @@
 }
 
 .subTitle {
-  font-size: 3.75rem;
-  color: var(--medium-seagreen);
+  font-size: 3rem;
+  color: var(--medium-purple);
   text-align: center;
   margin: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .inputBox {
   width: 25.125rem;
   height: 3.5rem;
-  margin: 0.75rem;
-  outline-color: #044936;
-  border: 1px solid var(--medium-seagreen);
-  font-size: 2rem;
+  margin: 0.2rem;
+  outline-color: var(--medium-purple);
+  border: 1px solid var(--light-purple);
+  font-size: 1.5rem;
   text-align: center;
 
   border-radius: 9px;
 }
 
 .inputBox::placeholder {
-  color: var(--medium-seagreen);
+  color: var(--light-purple);
 }
 
 .error {
@@ -37,4 +39,9 @@
   color: var(--dark-pink);
   height: 1rem;
   width: 100%;
+}
+
+.link-login {
+  text-decoration: none;
+  color: #f2ae2e;
 }
