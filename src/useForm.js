@@ -6,9 +6,11 @@ const useForm = (callback, validate) => {
     email: '',
     password: '',
     password2: '',
+    role: '',
   });
 
   const [errors, setErrors] = useState({});
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {

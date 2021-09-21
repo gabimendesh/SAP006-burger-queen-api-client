@@ -9,7 +9,10 @@ export default function FormSignIn({ submitForm }) {
     handleChange, values, handleSubmit, errors,
   } = useForm(submitForm, validateInfo);
   return (
-    <form className={styles.box} onSubmit={handleSubmit}>
+    <form
+      className={styles.box}
+      onSubmit={handleSubmit}
+    >
       <p className={styles.subTitle}>
         Login
       </p>

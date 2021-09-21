@@ -58,11 +58,17 @@ const FormSignup = ({ submitForm }) => {
         <p className={styles.error}>
           {errors.password2}
         </p>
-        <select name="select" id="select" className={styles.select}>
-          <option selected disabled>Cargo</option>
-          <option value="cozinheiro">Cozinheiro</option>
-          <option value="garçom">Garçom</option>
+        <select
+          onChange={handleChange}
+          className={styles.select}
+        >
+          <option disabled>Cargo</option>
+          <option name="role" value="Cozinheiro">Cozinheiro</option>
+          <option name="role" value="Garçom">Garçom</option>
         </select>
+        <p className={styles.error}>
+          {errors.role}
+        </p>
         <button className={styles['btn-register']} type="submit">
           Cadastre-se
         </button>
