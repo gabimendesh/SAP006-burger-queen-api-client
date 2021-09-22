@@ -1,25 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import validate from '../../validateInfo';
-import useForm from '../../useForm';
+import validate from '../../services/validateInfo';
+import useForm from '../../services/useForm';
 import styles from './style.module.css';
 
 const FormSignup = ({ submitForm }) => {
   const {
-    handleChange, values, handleSubmit, errors,
+    handleChange, values, errors,
   } = useForm(submitForm, validate);
+
+  React.useEffect(() => {
+
+  }, []);
+
+  const options = [
+    {
+      value: 'Cozinha',
+      id: 'kitchen',
+    },
+    {
+      value: 'Garçom - Garçonete',
+      id: 'waiter',
+    },
+  ];
+
   return (
     <div className={styles['form-content-right']}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={styles.form}
+        onSubmit={(e) => {
+          e.preventDefault();
+          fetch('https://lab-api-bq.herokuapp.com/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              name: values.name,
+              email: values.email,
+              password: values.password,
+              role: values.role,
+              restaurant: values.restaurant,
+            }),
+          })
+            .then((response) => response.json())
+            .then((responseDone) => {
+              console.log('Pessoas cadastradas =>', responseDone);
+            });
+        }}
+
+      >
         <h1 className={styles.register}>
           Registro
         </h1>
         <input
           className={styles['form-input']}
           type="text"
-          name="username"
+          name="name"
           placeholder="Digite seu nome"
-          value={values.username}
+          value={values.name}
           onChange={handleChange}
         />
         <p className={styles.error}>
@@ -61,10 +101,17 @@ const FormSignup = ({ submitForm }) => {
         <select
           onChange={handleChange}
           className={styles.select}
+          value={options.value}
+          name="role"
         >
-          <option disabled>Cargo</option>
-          <option name="role" value="Cozinheiro">Cozinheiro</option>
-          <option name="role" value="Garçom">Garçom</option>
+          {options.map((option) => (
+            <option
+              key={option.id}
+              value={option.value}
+            >
+              {option.value}
+            </option>
+          ))}
         </select>
         <p className={styles.error}>
           {errors.role}

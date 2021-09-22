@@ -1,7 +1,7 @@
 export default function validateInfo(values) {
   const errors = {};
 
-  if (!values.username.trim()) {
+  if (!values.name.trim()) {
     errors.username = 'Preencha com seu nome';
   }
 

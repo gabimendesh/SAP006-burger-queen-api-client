@@ -7,7 +7,6 @@ import styles from './style.module.css';
 export default function Register() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submitForm = () => setIsSubmitted(true);
-
   return (
     <>
       <section className={styles.logoArea}>

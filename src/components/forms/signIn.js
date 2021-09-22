@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../button';
 import styles from './style.module.css';
-import validateInfo from '../../validateInfo';
-import useForm from '../../useForm';
+import validateInfo from '../../services/validateInfo';
+import useForm from '../../services/useForm';
 
 export default function FormSignIn({ submitForm }) {
   const {
