@@ -17,12 +17,6 @@ export default function validateInfo(values) {
     errors.password = 'A senha precisa de 6 caracteres ou mais';
   }
 
-  if (!values.password2) {
-    errors.password2 = 'Confirme sua senha';
-  } else if (values.password2 !== values.password) {
-    errors.password2 = 'Senhas incompatíveis';
-  }
-
   if (!values.role) {
     errors.role = 'É necessário escolher uma função';
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Button from '../button';
 import styles from './style.module.css';
 import validateInfo from '../../services/validateInfo';
@@ -7,36 +7,16 @@ import useForm from '../../services/useForm';
 
 export default function FormSignIn({ submitForm }) {
   const {
-    handleChange, values, errors,
+    handleChange, values, handleSubmit,
   } = useForm(submitForm, validateInfo);
+
+  const history = useHistory();
+  // const [error, setError] = useState('');
+
   return (
     <form
       className={styles.box}
-      onSubmit={(e) => {
-        e.preventDefault();
-        fetch('https://lab-api-bq.herokuapp.com/auth', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            email: values.email,
-            password: values.password,
-          }),
-        })
-          .then((response) => response.json())
-          .then((responseDone) => {
-            const userRole = responseDone.role;
-            const { token } = responseDone;
-            localStorage.setItem('token', token);
-            const userTokenOnLocalStorage = localStorage.getItem('token');
-            if (userRole === 'Garçom - Garçonete') {
-              <Redirect to="/menu" />;
-              console.log('token do usuário no ls', userTokenOnLocalStorage);
-            }
-          });
-      }}
+      onSubmit={handleSubmit}
     >
       <p className={styles.subTitle}>
         Login
@@ -49,9 +29,6 @@ export default function FormSignIn({ submitForm }) {
         value={values.email}
         onChange={handleChange}
       />
-      <p className={styles.error}>
-        {errors.email}
-      </p>
       <input
         type="password"
         name="password"
@@ -61,10 +38,10 @@ export default function FormSignIn({ submitForm }) {
         onChange={handleChange}
       />
       <p className={styles.error}>
-        {errors.password}
+        `error`
       </p>
 
-      <Button variant="primary">
+      <Button variant="primary" onClick={() => history.push('/menu')}>
         Entrar
       </Button>
     </form>
