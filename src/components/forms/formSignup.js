@@ -87,14 +87,6 @@ const FormSignup = ({ submitForm }) => {
         <p className={styles.error}>
           {errors.password}
         </p>
-        <input
-          className={styles['form-input']}
-          type="password"
-          name="password2"
-          placeholder="Confirme sua senha"
-          value={values.password2}
-          onChange={handleChange}
-        />
         <p className={styles.error}>
           {errors.password2}
         </p>
