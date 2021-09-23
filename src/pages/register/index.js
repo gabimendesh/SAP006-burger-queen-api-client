@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormSignup from '../../components/forms/formSignup';
+import FormSignup from '../../components/forms/signUp';
 import FormSucess from '../../components/forms/formSucess';
 import Title from '../../images/Title.png';
 import styles from './style.module.css';

@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../button';
 import styles from './style.module.css';
-import validateInfo from '../../services/validateInfo';
 import useForm from '../../services/useForm';
+import { signInWithEmailAndPassword } from '../../services/auth';
 
 export default function FormSignIn({ submitForm }) {
   const {
-    handleChange, values, handleSubmit,
-  } = useForm(submitForm, validateInfo);
+    handleChange, values,
+  } = useForm(submitForm);
 
-  const history = useHistory();
-  // const [error, setError] = useState('');
+  const history = useHistory('/');
+  const [error, setError] = useState('');
 
   return (
     <form
       className={styles.box}
-      onSubmit={handleSubmit}
+      onSubmit={(e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(values.email, values.password)
+          .then((response) => response.json())
+          .then((responseDone) => {
+            const { token } = responseDone;
+            const userRole = responseDone.role;
+            if (userRole === 'garçom - garçonete') {
+              localStorage.setItem('token', token);
+              history.push('/menu');
+            }
+            if (userRole === 'cozinha') {
+              localStorage.setItem('token', token);
+              history.push('/cozinha');
+            } else if (responseDone) {
+              const errorMessage = responseDone.message;
+              setError(errorMessage);
+            }
+          });
+      }}
     >
       <p className={styles.subTitle}>
         Login
@@ -38,7 +57,7 @@ export default function FormSignIn({ submitForm }) {
         onChange={handleChange}
       />
       <p className={styles.error}>
-        `error`
+        {error}
       </p>
 
       <Button variant="primary" onClick={() => history.push('/menu')}>

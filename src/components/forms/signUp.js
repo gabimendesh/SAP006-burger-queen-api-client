@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import validate from '../../services/validateInfo';
 import useForm from '../../services/useForm';
 import styles from './style.module.css';
 
 const FormSignup = ({ submitForm }) => {
   const {
-    handleChange, values, errors,
-  } = useForm(submitForm, validate);
+    handleChange, values,
+  } = useForm(submitForm);
 
-  React.useEffect(() => {
-
-  }, []);
+  const [error, setError] = useState('');
 
   const options = [
     {
@@ -47,6 +44,10 @@ const FormSignup = ({ submitForm }) => {
             .then((response) => response.json())
             .then((responseDone) => {
               console.log('Pessoas cadastradas =>', responseDone);
+              if (responseDone.message) {
+                const errorMessage = responseDone.message;
+                setError(errorMessage);
+              }
             });
         }}
 
@@ -62,9 +63,6 @@ const FormSignup = ({ submitForm }) => {
           value={values.name}
           onChange={handleChange}
         />
-        <p className={styles.error}>
-          {errors.username}
-        </p>
         <input
           className={styles['form-input']}
           type="email"
@@ -73,9 +71,6 @@ const FormSignup = ({ submitForm }) => {
           value={values.email}
           onChange={handleChange}
         />
-        <p className={styles.error}>
-          {errors.email}
-        </p>
         <input
           className={styles['form-input']}
           type="password"
@@ -84,12 +79,6 @@ const FormSignup = ({ submitForm }) => {
           value={values.password}
           onChange={handleChange}
         />
-        <p className={styles.error}>
-          {errors.password}
-        </p>
-        <p className={styles.error}>
-          {errors.password2}
-        </p>
         <select
           onChange={handleChange}
           className={styles.select}
@@ -106,7 +95,7 @@ const FormSignup = ({ submitForm }) => {
           ))}
         </select>
         <p className={styles.error}>
-          {errors.role}
+          {error}
         </p>
         <button className={styles['btn-register']} type="submit">
           Cadastre-se
