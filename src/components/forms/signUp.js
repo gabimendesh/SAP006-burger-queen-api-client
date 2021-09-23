@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useForm from '../../services/useForm';
 import styles from './style.module.css';
+import { signUp } from '../../services/auth';
 
 const FormSignup = ({ submitForm }) => {
   const {
@@ -27,27 +28,11 @@ const FormSignup = ({ submitForm }) => {
         className={styles.form}
         onSubmit={(e) => {
           e.preventDefault();
-          fetch('https://lab-api-bq.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            body: JSON.stringify({
-              name: values.name,
-              email: values.email,
-              password: values.password,
-              role: values.role,
-              restaurant: values.restaurant,
-            }),
-          })
-            .then((response) => response.json())
-            .then((responseDone) => {
-              console.log('Pessoas cadastradas =>', responseDone);
-              if (responseDone.message) {
-                const errorMessage = responseDone.message;
-                setError(errorMessage);
-              }
+          signUp(values.name, values.email, values.password, values.role, values.restaurant)
+            .then((response) => console.log(response))
+            .catch((err) => {
+              const errorMessage = err.message;
+              setError(errorMessage);
             });
         }}
 

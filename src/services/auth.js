@@ -1,33 +1,36 @@
-export const signInWithEmailAndPassword = (email, password) => fetch('https://lab-api-bq.herokuapp.com/auth', {
-  method: 'POST',
+const request = (endpoint, method, body) => fetch(`https://lab-api-bq.herokuapp.com${endpoint}`, {
+  method,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
-  body: JSON.stringify({
+  body: JSON.stringify(body),
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw response;
+    }
+    return response.json();
+  })
+  .catch((response) => response.json())
+  .then((error) => { throw error; });
+
+export const signInWithEmailAndPassword = (
+  email, password,
+) => request('/auth', 'POST', { email, password });
+
+export const signUp = (
+  name,
+  email,
+  password,
+  role,
+  restaurant,
+) => {
+  request('/users', 'POST', {
+    name,
     email,
     password,
-  }),
-});
-
-export const signUp = (e) => {
-  e.preventDefault();
-  fetch('https://lab-api-bq.herokuapp.com/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      // name: values.name,
-      // email: values.email,
-      // password: values.password,
-      // role: values.role,
-      // restaurant: values.restaurant,
-    }),
-  })
-    .then((response) => response.json())
-    .then((responseDone) => {
-      console.log('Pessoas cadastradas =>', responseDone);
-    });
+    role,
+    restaurant,
+  });
 };

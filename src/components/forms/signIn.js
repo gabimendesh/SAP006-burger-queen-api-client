@@ -10,7 +10,7 @@ export default function FormSignIn({ submitForm }) {
     handleChange, values,
   } = useForm(submitForm);
 
-  const history = useHistory('/');
+  const history = useHistory();
   const [error, setError] = useState('');
 
   return (
@@ -19,21 +19,19 @@ export default function FormSignIn({ submitForm }) {
       onSubmit={(e) => {
         e.preventDefault();
         signInWithEmailAndPassword(values.email, values.password)
-          .then((response) => response.json())
-          .then((responseDone) => {
-            const { token } = responseDone;
-            const userRole = responseDone.role;
-            if (userRole === 'garçom - garçonete') {
-              localStorage.setItem('token', token);
+          .then((response) => {
+            if (response.role === 'garçom - garçonete') {
+              localStorage.setItem('token', response.token);
               history.push('/menu');
             }
-            if (userRole === 'cozinha') {
-              localStorage.setItem('token', token);
+            if (response.role === 'cozinha') {
+              localStorage.setItem('token', response.token);
               history.push('/cozinha');
-            } else if (responseDone) {
-              const errorMessage = responseDone.message;
-              setError(errorMessage);
             }
+          })
+          .catch((err) => {
+            const errorMessage = err.message;
+            setError(errorMessage);
           });
       }}
     >
