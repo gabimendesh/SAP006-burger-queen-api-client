@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useForm from '../../services/useForm';
 import styles from './style.module.css';
 import { signUp } from '../../services/auth';
@@ -9,6 +9,7 @@ const FormSignup = ({ submitForm }) => {
     handleChange, values,
   } = useForm(submitForm);
 
+  const history = useHistory();
   const [error, setError] = useState('');
 
   const options = [
@@ -29,7 +30,7 @@ const FormSignup = ({ submitForm }) => {
         onSubmit={(e) => {
           e.preventDefault();
           signUp(values.name, values.email, values.password, values.role, values.restaurant)
-            .then((response) => console.log(response))
+            .then(history.push('/'))
             .catch((err) => {
               const errorMessage = err.message;
               setError(errorMessage);

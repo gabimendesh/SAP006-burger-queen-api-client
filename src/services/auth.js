@@ -1,4 +1,8 @@
-const request = (endpoint, method, body) => fetch(`https://lab-api-bq.herokuapp.com${endpoint}`, {
+const request = (
+  endpoint,
+  method,
+  body,
+) => fetch(`https://lab-api-bq.herokuapp.com${endpoint}`, {
   method,
   headers: {
     'Content-Type': 'application/json',
@@ -25,12 +29,10 @@ export const signUp = (
   password,
   role,
   restaurant,
-) => {
-  request('/users', 'POST', {
-    name,
-    email,
-    password,
-    role,
-    restaurant,
-  });
-};
+) => request('/users', 'POST', {
+  name,
+  email,
+  password,
+  role,
+  restaurant,
+});
