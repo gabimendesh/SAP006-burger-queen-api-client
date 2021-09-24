@@ -41,6 +41,7 @@ export default function FormSignIn({ submitForm }) {
         Login
       </p>
       <input
+        data-testid="email"
         type="email"
         name="email"
         placeholder="Digite o seu email"
@@ -49,6 +50,7 @@ export default function FormSignIn({ submitForm }) {
         onChange={handleChange}
       />
       <input
+        data-testid="password"
         type="password"
         name="password"
         placeholder="Digite a sua senha"
@@ -60,7 +62,7 @@ export default function FormSignIn({ submitForm }) {
         {error}
       </p>
 
-      <Button variant="primary" onClick={() => history.push('/menu')}>
+      <Button variant="primary" onClick={() => history.push('/menu')} id="buttom">
         Entrar
       </Button>
     </form>
