@@ -7,7 +7,11 @@ export default function Button(props) {
 
   return (
     <>
-      <button type="submit" className={classes}>
+      <button
+        data-testid="button"
+        type="submit"
+        className={classes}
+      >
         {children}
       </button>
     </>

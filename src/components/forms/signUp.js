@@ -8,18 +8,26 @@ const FormSignup = ({ submitForm }) => {
   const {
     handleChange, values,
   } = useForm(submitForm);
+  console.log(values);
 
   const history = useHistory();
   const [error, setError] = useState('');
 
   const options = [
     {
+      value: 'Função',
+      id: 'role',
+      hidden: true,
+    },
+    {
       value: 'Cozinha',
       id: 'kitchen',
+      hidden: false,
     },
     {
       value: 'Garçom - Garçonete',
       id: 'waiter',
+      hidden: false,
     },
   ];
 
@@ -66,17 +74,21 @@ const FormSignup = ({ submitForm }) => {
           onChange={handleChange}
         />
         <select
+          defaultValue={options[1]}
           onChange={handleChange}
           className={styles.select}
           value={options.value}
           name="role"
         >
-          {options.map((option) => (
+          {options.map(({
+            value, id, hidden,
+          }) => (
             <option
-              key={option.id}
-              value={option.value}
+              key={id}
+              value={value}
+              hidden={hidden}
             >
-              {option.value}
+              {value}
             </option>
           ))}
         </select>

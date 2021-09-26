@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/global.css';
 import { Link } from 'react-router-dom';
 import styles from './style.module.css';
@@ -7,8 +7,6 @@ import Button from '../../components/button';
 import logo from '../../images/logo.png';
 
 export default function Login() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const submitForm = () => setIsSubmitted(true);
   return (
     <>
       <section className={styles.logoArea}>
@@ -17,7 +15,7 @@ export default function Login() {
       <main>
         <div className={styles.loginScreen}>
           <section className={styles.formArea}>
-            {!isSubmitted ? <FormSignIn submitForm={submitForm} /> : 'login concluído'}
+            <FormSignIn />
             <footer className={styles.footer}>
               <p>
                 O funcionário ainda não é cadastrado? <br />
