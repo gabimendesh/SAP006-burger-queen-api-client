@@ -8,7 +8,6 @@ const FormSignup = ({ submitForm }) => {
   const {
     handleChange, values,
   } = useForm(submitForm);
-  console.log(values);
 
   const history = useHistory();
   const [error, setError] = useState('');
@@ -38,7 +37,11 @@ const FormSignup = ({ submitForm }) => {
         onSubmit={(e) => {
           e.preventDefault();
           signUp(values.name, values.email, values.password, values.role, values.restaurant)
-            .then(history.push('/'))
+            .then((response) => {
+              if (response.id) {
+                history.push('/');
+              }
+            })
             .catch((err) => {
               const errorMessage = err.message;
               setError(errorMessage);

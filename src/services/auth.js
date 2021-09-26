@@ -10,15 +10,14 @@ const request = (
   },
   body: JSON.stringify(body),
 })
-  .then((response) => response.json)
   .then((response) => {
-    if (!response.ok) {
-      throw response;
-    }
+    if (!response.ok) { throw response; }
     return response.json();
+  })
+  .catch(async (response) => {
+    const error = await response.json().then((text) => text);
+    return Promise.reject(error);
   });
-// .catch((response) => response.json())
-// .then((error) => { throw error; });
 
 export const signInWithEmailAndPassword = (
   email, password,
