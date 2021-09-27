@@ -15,7 +15,8 @@ const request = (
     return response.json();
   })
   .catch(async (response) => {
-    const error = await response.json().then((text) => text);
+    const error = await response.json()
+      .then((text) => text);
     return Promise.reject(error);
   });
 

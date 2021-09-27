@@ -4,6 +4,7 @@ import Button from '../button';
 import styles from './style.module.css';
 import useForm from '../../services/useForm';
 import { signInWithEmailAndPassword } from '../../services/auth';
+import { saveUserTokenOnLocalStorage } from '../../services/localStorage';
 
 export default function FormSignIn({ submitForm }) {
   const {
@@ -22,7 +23,7 @@ export default function FormSignIn({ submitForm }) {
         signInWithEmailAndPassword(values.email, values.password)
           .then((response) => {
             if (response.role === 'garçom - garçonete') {
-              localStorage.setItem('token', response.token);
+              saveUserTokenOnLocalStorage(response.token);
               history.push('/menu');
             }
             if (response.role === 'cozinha') {
