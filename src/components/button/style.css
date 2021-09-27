@@ -2,12 +2,14 @@
   width: 32rem;
   height: 4.75rem;
   border-radius: 2.625rem;
-  background: var(--medium-seagreen);
-  font-size: 2rem;
+  background: var(--medium-purple);
+  font-size: 1.5rem;
   border: none;
 
   color: white;
   margin-top: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
 
   display: flex;
   justify-content: center;

@@ -1,42 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../button';
 import styles from './style.module.css';
-import validateInfo from '../../validateInfo';
-import useForm from '../../useForm';
+import useForm from '../../services/useForm';
+import { signInWithEmailAndPassword } from '../../services/auth';
+import { saveUserTokenOnLocalStorage } from '../../services/localStorage';
 
 export default function FormSignIn({ submitForm }) {
   const {
-    handleChange, values, handleSubmit, errors,
-  } = useForm(submitForm, validateInfo);
+    handleChange, values,
+  } = useForm(submitForm);
+
+  const history = useHistory();
+  const [error, setError] = useState('');
+
   return (
-    <form className={styles.box} onSubmit={handleSubmit}>
+    <form
+      data-testid="form"
+      className={styles.box}
+      onSubmit={(e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(values.email, values.password)
+          .then((response) => {
+            if (response.role === 'garçom - garçonete') {
+              saveUserTokenOnLocalStorage(response.token);
+              history.push('/menu');
+            }
+            if (response.role === 'cozinha') {
+              localStorage.setItem('token', response.token);
+              history.push('/cozinha');
+            }
+          })
+          .catch((err) => {
+            const errorMessage = err.message;
+            setError(errorMessage);
+          });
+      }}
+    >
       <p className={styles.subTitle}>
         Login
       </p>
       <input
+        data-testid="email"
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder="Digite o seu email"
         className={styles.inputBox}
         value={values.email}
         onChange={handleChange}
       />
-      <p className={styles.error}>
-        {errors.email}
-      </p>
       <input
+        data-testid="password"
         type="password"
         name="password"
-        placeholder="Senha"
+        placeholder="Digite a sua senha"
         className={styles.inputBox}
         value={values.password}
         onChange={handleChange}
       />
       <p className={styles.error}>
-        {errors.password}
+        {error}
       </p>
 
-      <Button variant="primary">
+      <Button variant="primary" onClick={() => history.push('/menu')} id="buttom">
         Entrar
       </Button>
     </form>

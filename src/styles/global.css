@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 * {
   margin: 0;
@@ -22,10 +22,10 @@
   --dark-gray: #1f1d2b;
   --medium-gray: #393939;
   --light-gray: #625e5e;
-  --medium-seagreen: #03a678;
   --dark-pink: #f25764;
-  --light-pink: #ff7ca3;
-  --medium-purple: #9290fe;
+  --medium-purple: #6100ff;
+  --light-purple: #9290fe;
+  --neon-green: #00e000;
 }
 
 body,
@@ -40,16 +40,15 @@ body,
 input,
 button,
 select {
-  font: 600 1rem Barlow, sans-serif;
+  font: 1rem Bebas-Neue, sans-serif;
 }
-
 
 h1,
 h2,
 h3,
 h4 {
-  font-weight: 600;
   color: var(--gray-800);
+  text-transform: uppercase;
 }
 
 h1 {
