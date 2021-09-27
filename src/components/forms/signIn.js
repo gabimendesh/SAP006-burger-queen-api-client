@@ -27,7 +27,7 @@ export default function FormSignIn({ submitForm }) {
               history.push('/menu');
             }
             if (response.role === 'cozinha') {
-              localStorage.setItem('token', response.token);
+              saveUserTokenOnLocalStorage(response.token);
               history.push('/cozinha');
             }
           })
