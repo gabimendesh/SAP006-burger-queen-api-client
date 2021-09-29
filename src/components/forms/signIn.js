@@ -22,6 +22,7 @@ export default function FormSignIn({ submitForm }) {
         e.preventDefault();
         signInWithEmailAndPassword(values.email, values.password)
           .then((response) => {
+            console.log('then', response);
             if (response.role === 'garçom - garçonete') {
               saveUserTokenOnLocalStorage(response.token);
               history.push('/menu');
@@ -32,6 +33,7 @@ export default function FormSignIn({ submitForm }) {
             }
           })
           .catch((err) => {
+            console.log('catch', err);
             const errorMessage = err.message;
             setError(errorMessage);
           });

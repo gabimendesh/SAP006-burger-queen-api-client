@@ -77,20 +77,13 @@ const FormSignup = ({ submitForm }) => {
           onChange={handleChange}
         />
         <select
-          defaultValue={options[1]}
           onChange={handleChange}
           className={styles.select}
           value={options.value}
           name="role"
         >
-          {options.map(({
-            value, id, hidden,
-          }) => (
-            <option
-              key={id}
-              value={value}
-              hidden={hidden}
-            >
+          {options.map(({ value, id, hidden }) => (
+            <option key={id} value={value} hidden={hidden}>
               {value}
             </option>
           ))}

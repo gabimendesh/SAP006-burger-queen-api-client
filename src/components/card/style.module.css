@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+.container-card {
+  width: 12rem;
+  height: 14.125rem;
+  margin: 1rem;
+  background: var(--dark-gray);
+  display: grid;
+  align-items: flex-end;
+  border-radius: 1rem;
+  color: var(--white);
+  font-family: Barlow, sans-serif;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 8rem;
+  border-radius: 50%;
+}
+
+.controller-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: flex-end;
+  border-radius: 16px;
+
+  height: 2.875rem;
+  color: var(--white);
+  background: var(--light-gray);
+  font-size: 1.5rem;
+}
+
+.item {
+  text-align: center;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.item p {
+  margin: 5px;
+}
+
+.add-item-button {
+  width: 3.5rem;
+  color: var(--white);
+  background: var(--medium-gray);
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  border-radius: 0 0 1rem 0;
+}
+
+.remove-item-button {
+  width: 3.5rem;
+  color: var(--white);
+  background: var(--medium-gray);
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  border-radius: 0 0 0 1rem;
+}

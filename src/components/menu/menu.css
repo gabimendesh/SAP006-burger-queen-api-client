@@ -9,8 +9,8 @@
     justify-content: space-around;
     align-items: center;
     height: 75px;
-    background-color: #1F1D2B;
-    color: #00E000;
+    background-color: var(--dark-gray);
+    color: var(--neon-green);
 
 }
 .logo{
@@ -28,7 +28,7 @@
 .pedidos,
 .logout{
     text-decoration: none;
-    color: #00E000;
+    color: var(--neon-green);
     font-size: 20px;
     padding: 10px 20px;
     margin: 0 5px;
@@ -36,7 +36,7 @@
 }
 
 .logout{
-    border: 1px solid #00E000;
+    border: 1px solid var(--neon-green);
     border-radius: 5px;
 }
 .mobile-menu-icon{
@@ -57,7 +57,7 @@
         position: absolute;
         display: block;
         list-style: none;
-        background-color: #4b4a4d;
+        background-color: var(--dark-gray);
         left: 0;
         top:75px;
         transition: all 0.3s ease-in-out;
@@ -66,7 +66,7 @@
     .menu,
     .pedidos,
     .logout{
-         color: #00E000;
+         color: var(--neon-green);
          text-align: center;
          padding: 32px;
          width: 100%;
@@ -79,12 +79,11 @@
         display: block;
         position: absolute;
         font-size: 30px;
-        color: #00E000;
-        background-color: #1F1D2B;
+        color: var(--neon-green);
+        background-color: var(--dark-gray);
         border: none;
         outline: none;
         top: 15px;
-        right: 25px;
-        
+        right: 25px;      
     }
 }
