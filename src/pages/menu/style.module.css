@@ -14,7 +14,7 @@
   background-image: url('../../images/burger-background.png');
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
 }
@@ -65,4 +65,13 @@
   color: var(--light-gray);
   font-size: 1.565rem;
   text-align: center;
+}
+
+.itens-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 100vh;
 }

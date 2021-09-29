@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getUserTokenOnLocalStorage } from '../../services/localStorage';
+import { getAllProducts } from '../../services/index';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
 
 export default function Menu() {
+  const [product, setProducts] = useState([]);
+  console.log(product);
+  useEffect(() => {
+    getAllProducts(getUserTokenOnLocalStorage)
+      .then((products) => products)
+      .then((item) => {
+        setProducts(item);
+      });
+  }, []);
   return (
     <>
       <div className={styles['menu-container']}>
@@ -26,7 +37,7 @@ export default function Menu() {
             className={styles['form-input']}
             type="text"
             name="name"
-            placeholder="Cliente"
+            placeholder="Nome do cliente"
           />
           <input
             className={styles['form-input']}
@@ -35,8 +46,11 @@ export default function Menu() {
             placeholder="Nº da mesa"
           />
         </div>
-
-        <Card />
+        <div className={styles['itens-container']}>
+          {product && product.map(({ name, price }) => (
+            <Card ItemName={name} ItemPrice={price} />
+          ))}
+        </div>
       </div>
     </>
   );
