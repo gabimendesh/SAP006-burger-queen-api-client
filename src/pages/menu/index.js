@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getAllProducts } from '../../services/index';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
+import Menu from '../../components/menu';
 
-export default function Menu() {
+export default function PageMenu() {
   const [product, setProducts] = useState([]);
   console.log(product);
   useEffect(() => {
@@ -15,11 +15,13 @@ export default function Menu() {
         setProducts(item);
       });
   }, []);
+
   return (
     <>
       <div className={styles['menu-container']}>
-        <h1 className={styles.menu}>Menu</h1>
-        <Link to="/">Logout</Link>
+        <header>
+          <Menu />
+        </header>
         <div className={styles['toggle-menu-container']}>
           <button
             className={styles['option-menu-button']}

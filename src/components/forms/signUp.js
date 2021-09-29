@@ -50,7 +50,7 @@ const FormSignup = ({ submitForm }) => {
 
       >
         <h1 className={styles.register}>
-          Registro
+          Registrar Funcionário
         </h1>
         <input
           className={styles['form-input']}
