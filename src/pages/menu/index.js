@@ -6,13 +6,17 @@ import styles from './style.module.css';
 import Menu from '../../components/menu';
 
 export default function PageMenu() {
-  const [product, setProducts] = useState([]);
-  console.log(product);
+  const [menu, setMenu] = useState(true);
+  const [breakfast, setBreakfastItens] = useState([]);
+  const [allDay, setAllDayItens] = useState([]);
+
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
-      .then((products) => products)
-      .then((item) => {
-        setProducts(item);
+      .then((products) => {
+        const breakfastItens = products.filter((item) => item.type === 'breakfast');
+        const allDayItens = products.filter((item) => item.type === 'all-day');
+        setBreakfastItens(breakfastItens);
+        setAllDayItens(allDayItens);
       });
   }, []);
 
@@ -26,11 +30,19 @@ export default function PageMenu() {
           <button
             className={styles['option-menu-button']}
             type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              setMenu(true);
+            }}
           >Café da manhã
           </button>
           <button
             className={styles['option-menu-button']}
             type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              setMenu(false);
+            }}
           >Menu Principal
           </button>
         </div>
@@ -49,9 +61,14 @@ export default function PageMenu() {
           />
         </div>
         <div className={styles['itens-container']}>
-          {product && product.map(({ name, price }) => (
-            <Card ItemName={name} ItemPrice={price} />
-          ))}
+          {
+            menu ? breakfast && breakfast.map(({ name, price, id }) => (
+              <Card ItemName={name} ItemPrice={price} key={id} />
+            ))
+              : allDay && allDay.map(({ name, price, id }) => (
+                <Card ItemName={name} ItemPrice={price} key={id} />
+              ))
+          }
         </div>
       </div>
     </>

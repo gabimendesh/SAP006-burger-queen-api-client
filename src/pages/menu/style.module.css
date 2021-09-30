@@ -15,9 +15,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  position: fixed;
+  position: relative;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .toggle-menu-container {
@@ -29,6 +31,15 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
+  position: fixed;
+}
+
+.toggle-menu-container {
+  top: 90px;
+}
+
+.client-data {
+  top: 150px;
 }
 
 .option-menu-button {
@@ -71,8 +82,10 @@
 .itens-container {
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 100px;
+  height: calc(86vh - 215px);
   width: 100%;
   flex-wrap: wrap;
   overflow: scroll;
-  height: 100vh;
 }
