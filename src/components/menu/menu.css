@@ -1,46 +1,46 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 75px;
+  background-color: var(--dark-gray);
+  color: var(--neon-green);
+  z-index: 1;
+}
+.logo {
+  font-size: 30px;
 }
 
-.navbar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 75px;
-    background-color: var(--dark-gray);
-    color: var(--neon-green);
-
-}
-.logo{
-    font-size: 30px;
-}
-
-.nav-links{
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    width: 75%;
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  width: 75%;
 }
 
 .menu,
 .pedidos,
-.logout{
-    text-decoration: none;
-    color: var(--neon-green);
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
+.logout {
+  text-decoration: none;
+  color: var(--neon-green);
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
-.logout{
-    border: 1px solid var(--neon-green);
-    border-radius: 5px;
+.logout {
+  border: 1px solid var(--neon-green);
+  border-radius: 5px;
 }
-.mobile-menu-icon{
-    display: none;
+
+.mobile-menu-icon {
+  display: none;
 }
 
 @media screen and (max-width: 780px){
@@ -60,12 +60,13 @@
         display: block;
         visibility: visible;
         overflow-y: hidden;
-        height: calc(100vh - 368px);
+        height: calc(100vh - 840px);
         list-style: none;
         background-color: var(--dark-gray);
         top:60px;
         transition: 0.6s;
         width: 100vw;
+        z-index: 1
     }
     .menu,
     .pedidos,
@@ -93,6 +94,16 @@
 }
 
 /*orders*/
+
+.footer{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 68rem;
+    height: 75px;
+    background: var(--dark-gray);
+}
 
 .itens{
     display: flex;
@@ -143,4 +154,10 @@
     transition: 0.6s;
     width: 100vw;
 }
-
+.btn-orders{
+    color: var(--neon-green);
+    background: none;
+    font-size: 40px;
+    margin-top: 10px;
+    outline: none;
+}
