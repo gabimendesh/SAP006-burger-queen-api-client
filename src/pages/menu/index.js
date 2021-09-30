@@ -1,9 +1,10 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
 import Menu from '../../components/menu';
 
 export default function PageMenu() {
+  const [isMobile, setIsMobile] = useState(false);
   return (
     <>
       <div className={styles['menu-container']}>
@@ -38,6 +39,35 @@ export default function PageMenu() {
         </div>
         <Card />
       </div>
+      <footer>
+        <button
+          type="button"
+          onClick={() => setIsMobile(false)}
+        > Pedidos
+        </button>
+        <div>
+          <div className={isMobile ? 'open-orders' : 'close-orders'}>
+            <section>
+              <p>Item</p>
+              <p>Quantidade</p>
+              <p>Preço</p>
+            </section>
+            <div>
+              <p>Hamburguer Simples</p>
+              <p>2</p>
+              <p>R$ 15,00</p>
+              <button type="button" id="delete-order" className="trash">
+                <i className="fas fa-trash-alt" />
+              </button>
+            </div>
+            <div className="resultOrders">
+              <p>Total a pagar</p>
+              <button type="button" className="btn-confirm">Confirmar pedido</button>
+              <button type="button" className="btn-cancel">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }

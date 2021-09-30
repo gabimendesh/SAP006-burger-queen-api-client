@@ -51,17 +51,21 @@
         left: 35px;
     }
     .nav-links{
-        display: none;   
+        visibility: hidden;
+        height: 0;
+        width: 100vw;
     }
     .nav-links-mobile{
         position: absolute;
         display: block;
+        visibility: visible;
+        overflow-y: hidden;
+        height: calc(100vh - 368px);
         list-style: none;
         background-color: var(--dark-gray);
-        left: 0;
-        top:75px;
-        transition: all 0.3s ease-in-out;
-        width: 100%;
+        top:60px;
+        transition: 0.6s;
+        width: 100vw;
     }
     .menu,
     .pedidos,
@@ -70,7 +74,7 @@
          text-align: center;
          padding: 32px;
          width: 100%;
-         transition: all 0.3s ease;
+         text-transform: uppercase;
     }
     .logout{
         border: none;
@@ -87,3 +91,56 @@
         right: 25px;      
     }
 }
+
+/*orders*/
+
+.itens{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 36px;
+    color: var(--white);
+}
+.resultOrders{
+ display: flex;
+ color: var(--white);
+ bottom: 5px;
+}
+.btn-cancel{
+  width: 12rem;
+  height: 2.75rem;
+  border-radius: 2.625rem;
+  background: #F25764;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+.btn-confirm{
+    width: 19rem;
+    height: 2.75rem;
+    border-radius: 2.625rem;
+    background: #0DD99F;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+.close-orders{
+    visibility: hidden;
+    height: 0;
+    width: 100vw;
+}
+.open-orders{
+    position: absolute;
+    display: block;
+    visibility: visible;
+    overflow-y: hidden;
+    height: calc(100vh - 368px);
+    list-style: none;
+    background-color: var(--dark-gray);
+    bottom: 60px;
+    transition: 0.6s;
+    width: 100vw;
+}
+
