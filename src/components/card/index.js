@@ -18,7 +18,7 @@ export default function Card({
           className={styles['remove-item-button']}
           type="button"
           onClick={() => {
-            onDecrease(Name, Price);
+            onDecrease(Name, Price, Id);
           }}
         >
           -

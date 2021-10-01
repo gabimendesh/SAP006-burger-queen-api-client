@@ -17,9 +17,9 @@ export default function PageMenu() {
     setAddItem([...addItem, { name, price, id }]);
   };
 
-  // const onDecreaseItem = () => {
-  //   addItem.filter((item, i) =>   )
-  // };
+  const onDecreaseItem = (id) => {
+    addItem.filter((item, i) => item.id === id[i]);
+  };
 
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
@@ -77,6 +77,7 @@ export default function PageMenu() {
                 Price={price}
                 key={id}
                 onIncrease={onIncreaseItem}
+                onDecrease={onDecreaseItem(id)}
               />
             ))
           }
