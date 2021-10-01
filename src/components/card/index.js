@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './style.module.css';
 
 export default function Card({ ItemName, ItemPrice }) {
-  const [count, setCount] = useState(0);
+  const [addItem, setAddItem] = useState([]);
 
   return (
     <div className={styles['container-card']}>
@@ -18,17 +18,16 @@ export default function Card({ ItemName, ItemPrice }) {
           className={styles['remove-item-button']}
           type="button"
           onClick={() => {
-            const counting = (count > 0) ? (count - 1) : count;
-            setCount(counting);
+            setAddItem([...addItem, { nome: ItemName, preco: ItemPrice }]);
           }}
         >
           -
         </button>
-        <p className={styles.item}>{count}</p>
+        <p className={styles.item} />
         <button
           className={styles['add-item-button']}
           type="button"
-          onClick={() => setCount(count + 1)}
+          onClick={() => setAddItem([...addItem, { nome: ItemName, preco: ItemPrice }])}
         >
           +
         </button>

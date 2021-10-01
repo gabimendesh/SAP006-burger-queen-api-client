@@ -4,6 +4,7 @@ import { getAllProducts } from '../../services/index';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
 import Menu from '../../components/menu';
+import CartArea from '../../components/cartArea/index';
 
 export default function PageMenu() {
   const [open, setOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function PageMenu() {
               <Card ItemName={name} ItemPrice={price} key={id} />
             ))
               : allDay && allDay.map(({ name, price, id }) => (
-                <Card ItemName={name} ItemPrice={price} key={id} />
+                <Card ItemName={name} ItemPrice={price} key={id} onClick={} />
               ))
           }
         </div>
@@ -86,14 +87,7 @@ export default function PageMenu() {
               <p>Qtd.</p>
               <p>Preço</p>
             </section>
-            <div className="item-list">
-              <p className="item-name">Hamburguer Simples</p>
-              <p className="item-number">2</p>
-              <p className="item-price">R$ 15,00</p>
-              <button type="button" id="delete-order" className="trash">
-                <i className="fas fa-trash-alt" />
-              </button>
-            </div>
+            <CartArea arrItem={itemsList} />
             <section className="resultOrders">
               <div className="total-price">
                 <p>Total a pagar</p>
