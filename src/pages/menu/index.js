@@ -6,7 +6,7 @@ import styles from './style.module.css';
 import Menu from '../../components/menu';
 
 export default function PageMenu() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(true);
   const [breakfast, setBreakfastItens] = useState([]);
   const [allDay, setAllDayItens] = useState([]);
@@ -75,30 +75,35 @@ export default function PageMenu() {
           <button
             className="btn-orders"
             type="button"
-            onClick={() => setIsMobile(false)}
-          > <i className="fas fa-hamburger" />
+            onClick={() => setOpen(!open)}
+          >
+            Pedidos
+            <i className="fas fa-hamburger" />
           </button>
-          <div>
-            <div className={isMobile ? 'open-orders' : 'close-orders'}>
-              <section>
-                <p>Item</p>
-                <p>Quantidade</p>
-                <p>Preço</p>
-              </section>
-              <div>
-                <p>Hamburguer Simples</p>
-                <p>2</p>
-                <p>R$ 15,00</p>
-                <button type="button" id="delete-order" className="trash">
-                  <i className="fas fa-trash-alt" />
-                </button>
-              </div>
-              <div className="resultOrders">
+          <div className={open ? 'open-orders' : 'close-orders'}>
+            <section className="subtitles-container">
+              <p className="item-subtitle">Item</p>
+              <p>Qtd.</p>
+              <p>Preço</p>
+            </section>
+            <div className="item-list">
+              <p className="item-name">Hamburguer Simples</p>
+              <p className="item-number">2</p>
+              <p className="item-price">R$ 15,00</p>
+              <button type="button" id="delete-order" className="trash">
+                <i className="fas fa-trash-alt" />
+              </button>
+            </div>
+            <section className="resultOrders">
+              <div className="total-price">
                 <p>Total a pagar</p>
+                <p>R$ 15,00</p>
+              </div>
+              <div className="buttons">
                 <button type="button" className="btn-confirm">Confirmar pedido</button>
                 <button type="button" className="btn-cancel">Cancelar</button>
               </div>
-            </div>
+            </section>
           </div>
         </footer>
       </div>

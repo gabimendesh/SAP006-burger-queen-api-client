@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './menu.css';
@@ -11,7 +9,6 @@ export default function Menu() {
       <h3 className="logo">Menu</h3>
       <ul
         className={isMobile ? 'nav-links-mobile' : 'nav-links'}
-        onClick={() => setIsMobile(false)}
       >
         <Link to="/" className="menu">
           <li>Menu</li>
@@ -20,7 +17,7 @@ export default function Menu() {
           <li>Pedidos Realizados</li>
         </Link>
         <Link to="/" className="logout">
-          <li>Logout</li>
+          <li>Sair</li>
         </Link>
       </ul>
       <button
