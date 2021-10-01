@@ -8,19 +8,32 @@ import CartArea from '../../components/cartArea/index';
 
 export default function PageMenu() {
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState(true);
-  const [breakfast, setBreakfastItens] = useState([]);
-  const [allDay, setAllDayItens] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  const [addItem, setAddItem] = useState([]);
+
+  const onIncreaseItem = (name, price, id) => {
+    setAddItem([...addItem, { name, price, id }]);
+  };
+
+  // const onDecreaseItem = () => {
+  //   addItem.filter((item, i) =>   )
+  // };
 
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
       .then((products) => {
+        setAllProducts(products);
         const breakfastItens = products.filter((item) => item.type === 'breakfast');
-        const allDayItens = products.filter((item) => item.type === 'all-day');
-        setBreakfastItens(breakfastItens);
-        setAllDayItens(allDayItens);
+        setSelectedProducts(breakfastItens);
       });
   }, []);
+
+  function filterMenu(type) {
+    const selectedMenu = allProducts.filter((item) => item.type === type);
+    setSelectedProducts(selectedMenu);
+  }
 
   return (
     <>
@@ -32,19 +45,13 @@ export default function PageMenu() {
           <button
             className={styles['option-menu-button']}
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setMenu(true);
-            }}
+            onClick={() => filterMenu('breakfast')}
           >Café da manhã
           </button>
           <button
             className={styles['option-menu-button']}
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setMenu(false);
-            }}
+            onClick={() => filterMenu('all-day')}
           >Menu Principal
           </button>
         </div>
@@ -64,12 +71,14 @@ export default function PageMenu() {
         </div>
         <div className={styles['itens-container']}>
           {
-            menu ? breakfast && breakfast.map(({ name, price, id }) => (
-              <Card ItemName={name} ItemPrice={price} key={id} />
+            selectedProducts.map(({ name, price, id }) => (
+              <Card
+                Name={name}
+                Price={price}
+                key={id}
+                onIncrease={onIncreaseItem}
+              />
             ))
-              : allDay && allDay.map(({ name, price, id }) => (
-                <Card ItemName={name} ItemPrice={price} key={id} onClick={} />
-              ))
           }
         </div>
         <footer className="footer">
@@ -87,7 +96,7 @@ export default function PageMenu() {
               <p>Qtd.</p>
               <p>Preço</p>
             </section>
-            <CartArea arrItem={itemsList} />
+            <CartArea arrItem={addItem} />
             <section className="resultOrders">
               <div className="total-price">
                 <p>Total a pagar</p>

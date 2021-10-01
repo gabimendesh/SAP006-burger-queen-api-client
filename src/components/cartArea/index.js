@@ -4,11 +4,11 @@ import CartItem from '../cartItem';
 export default function CartArea({ arrItem }) {
   return (
     <section>
-      {arrItem.map((item) => (
+      {arrItem.map(({ id, name, price }) => (
         <CartItem
-          key={item.id}
-          nome={item.name}
-          preco={item.price}
+          key={id}
+          name={name}
+          price={price}
         />
       ))}
     </section>
