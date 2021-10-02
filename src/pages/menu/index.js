@@ -18,9 +18,12 @@ export default function PageMenu() {
   };
 
   const onDecreaseItem = (id) => {
-    addItem.filter((item, i) => item.id === id[i]);
+    const itemIndex = addItem.filter((item) => item.id !== id);
+    console.log('remover itens do array', itemIndex);
+    setAddItem(itemIndex);
   };
 
+  console.log('itens do array', addItem);
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
       .then((products) => {
@@ -72,12 +75,14 @@ export default function PageMenu() {
         <div className={styles['itens-container']}>
           {
             selectedProducts.map(({ name, price, id }) => (
+
               <Card
                 Name={name}
-                Price={price}
                 key={id}
+                Price={price}
+                Id={id}
                 onIncrease={onIncreaseItem}
-                onDecrease={onDecreaseItem(id)}
+                onDecrease={() => onDecreaseItem(id)}
               />
             ))
           }
