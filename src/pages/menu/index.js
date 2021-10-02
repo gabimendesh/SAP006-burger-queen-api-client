@@ -3,7 +3,7 @@ import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getAllProducts } from '../../services/index';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
-import Menu from '../../components/menu';
+import Header from '../../components/header';
 import CartArea from '../../components/cartArea/index';
 
 export default function PageMenu() {
@@ -14,16 +14,31 @@ export default function PageMenu() {
   const [addItem, setAddItem] = useState([]);
 
   const onIncreaseItem = (name, price, id) => {
-    setAddItem([...addItem, { name, price, id }]);
+    const exist = addItem.find((item) => item.id === id);
+
+    if (exist) {
+      setAddItem(addItem.map((item) => (
+        item.id === id ? { ...exist, quantity: exist.quantity + 1 } : item
+      )));
+    } else {
+      setAddItem([...addItem, {
+        name, price, id, quantity: 1,
+      }]);
+    }
   };
 
   const onDecreaseItem = (id) => {
-    const itemIndex = addItem.filter((item) => item.id !== id);
-    console.log('remover itens do array', itemIndex);
-    setAddItem(itemIndex);
+    const exist = addItem.find((item) => item.id === id);
+    if (exist.quantity === 1) {
+      const itemToRemove = addItem.filter((item) => item.id !== id);
+      setAddItem(itemToRemove);
+    } else {
+      setAddItem(addItem.map((item) => (
+        item.id === id ? { ...exist, quantity: exist.quantity - 1 } : item
+      )));
+    }
   };
 
-  console.log('itens do array', addItem);
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
       .then((products) => {
@@ -42,7 +57,7 @@ export default function PageMenu() {
     <>
       <div className={styles['menu-container']}>
         <header className="header">
-          <Menu />
+          <Header />
         </header>
         <div className={styles['toggle-menu-container']}>
           <button
@@ -74,7 +89,9 @@ export default function PageMenu() {
         </div>
         <div className={styles['itens-container']}>
           {
-            selectedProducts.map(({ name, price, id }) => (
+            selectedProducts.map(({
+              name, price, id,
+            }) => (
 
               <Card
                 Name={name}

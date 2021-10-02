@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './style.module.css';
 
 export default function Card({
-  Name, Price, onIncrease, onDecrease, Id,
+  Name, Price, onIncrease, onDecrease, Id, Quantity,
 }) {
   return (
     <div className={styles['container-card']}>
@@ -18,17 +18,17 @@ export default function Card({
           className={styles['remove-item-button']}
           type="button"
           onClick={() => {
-            onDecrease(Name, Price, Id);
+            onDecrease(Name, Price, Id, Quantity);
           }}
         >
           -
         </button>
-        <p className={styles.item} />
+        <p className={styles.item}>{Quantity}</p>
         <button
           className={styles['add-item-button']}
           type="button"
           onClick={() => {
-            onIncrease(Name, Price, Id);
+            onIncrease(Name, Price, Id, Quantity);
           }}
         >
           +
