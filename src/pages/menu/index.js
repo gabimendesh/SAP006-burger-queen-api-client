@@ -10,9 +10,8 @@ export default function PageMenu() {
   const [open, setOpen] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-
   const [addItem, setAddItem] = useState([]);
-
+  const ItemsPrice = addItem.reduce((a, c) => a + c.price * c.quantity, 0);
   const onIncreaseItem = (name, price, id) => {
     const exist = addItem.find((item) => item.id === id);
 
@@ -123,7 +122,7 @@ export default function PageMenu() {
             <section className="resultOrders">
               <div className="total-price">
                 <p>Total a pagar</p>
-                <p>R$ 15,00</p>
+                <p>R$ {ItemsPrice}</p>
               </div>
               <div className="buttons">
                 <button type="button" className="btn-confirm">Confirmar pedido</button>
