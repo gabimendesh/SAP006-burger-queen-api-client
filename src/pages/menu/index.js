@@ -18,7 +18,7 @@ export default function PageMenu() {
     table: '',
     products: cartItem,
   });
-  console.log(values);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -26,8 +26,8 @@ export default function PageMenu() {
       [name]: value,
     });
   };
+
   const handleSubmit = () => {
-    console.log(cartItem);
     sendItens(values.name, values.table, cartItem);
   };
 
@@ -59,6 +59,16 @@ export default function PageMenu() {
       setCartItems(cartItem.map((item) => (item.id === product.id
         ? { ...exist, qtd: exist.qtd - 1 } : item)));
     }
+  };
+
+  const cancelAllOrder = () => {
+    const product = cartItem.filter((item) => !item);
+    setCartItems(product);
+  };
+
+  const cancelAnOrder = (product) => {
+    const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+    setCartItems(itemToRemove);
   };
 
   function filterMenu(type) {
@@ -136,6 +146,7 @@ export default function PageMenu() {
               cartItem={cartItem}
               onIncrease={onIncrease}
               onDecrease={onDecrease}
+              cancelAnOrder={cancelAnOrder}
             />
             <section className="resultOrders">
               <div className="total-price">
@@ -144,7 +155,7 @@ export default function PageMenu() {
               </div>
               <div className="buttons">
                 <button type="button" className="btn-confirm" onClick={handleSubmit}>Confirmar pedido</button>
-                <button type="button" className="btn-cancel">Cancelar</button>
+                <button type="button" className="btn-cancel" onClick={cancelAllOrder}>Cancelar</button>
               </div>
             </section>
           </div>

@@ -3,7 +3,9 @@ import CartItem from '../cartItem';
 import './style.css';
 
 export default function CartArea(props) {
-  const { cartItem, onIncrease, onDecrease } = props;
+  const {
+    cartItem, onIncrease, onDecrease, cancelAnOrder,
+  } = props;
   return (
     <section className="item-list-container">
       <div>
@@ -18,6 +20,7 @@ export default function CartArea(props) {
             quantity={item.qtd}
             increase={() => onIncrease(item)}
             decrease={() => onDecrease(item)}
+            cancelAnOrder={() => cancelAnOrder(item)}
           />
         ))
       }

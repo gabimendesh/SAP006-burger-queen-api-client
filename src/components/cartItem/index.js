@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 
 export default function CartItem({
-  name, price, quantity, increase, decrease,
+  name, price, quantity, increase, decrease, cancelAnOrder,
 }) {
   return (
     <div className="item-list">
@@ -26,7 +26,12 @@ export default function CartItem({
         </button>
       </div>
       <p className="item-price">{price}</p>
-      <button type="button" id="delete-order" className="trash">
+      <button
+        type="button"
+        id="delete-order"
+        className="trash"
+        onClick={cancelAnOrder}
+      >
         <i className="fas fa-trash-alt" />
       </button>
     </div>
