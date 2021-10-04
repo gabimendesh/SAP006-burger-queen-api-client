@@ -1,19 +1,26 @@
 import React from 'react';
 import CartItem from '../cartItem';
+import './style.css';
 
-export default function CartArea({ arrItem }) {
+export default function CartArea(props) {
+  const { cartItem, onIncrease, onDecrease } = props;
   return (
-    <section>
-      {arrItem.map(({
-        name, price, id, quantity,
-      }) => (
-        <CartItem
-          key={id}
-          name={name}
-          price={price}
-          quantity={quantity}
-        />
-      ))}
+    <section className="item-list-container">
+      <div>
+        {cartItem.length === 0 && <p className="empty-cart">Anotar pedidos</p>}
+      </div>
+      {
+        cartItem.map((item) => (
+          <CartItem
+            key={item.id}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
+            increase={() => onIncrease(item)}
+            decrease={() => onDecrease(item)}
+          />
+        ))
+      }
     </section>
   );
 }

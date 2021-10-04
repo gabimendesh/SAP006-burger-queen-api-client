@@ -1,0 +1,130 @@
+.footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 68rem;
+  width: 100vw;
+  background: var(--dark-gray);
+}
+
+.subtitles-container {
+  display: grid;
+  grid-template-columns: 19rem 10rem 11rem 1fr;
+  gap: 2rem;
+  text-align: center;
+  justify-content: space-around;
+  color: var(--white);
+  font-size: 2rem;
+  margin: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.item-list-container {
+  height: calc(70vh - 300px);
+  overflow: scroll;
+}
+
+.item-subtitle {
+  text-align: start;
+}
+
+.itens {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 36px;
+  color: var(--white);
+}
+
+.resultOrders {
+  display: flex;
+  color: var(--white);
+  bottom: 5px;
+  width: 100vw;
+}
+
+.btn-confirm,
+.btn-cancel {
+  height: 3.75rem;
+  border-radius: 2.625rem;
+  font-size: 1.5rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.btn-confirm {
+  width: 20rem;
+  background: #0dd99f;
+}
+
+.btn-cancel {
+  width: 17rem;
+  background: var(--dark-pink);
+}
+
+.close-orders {
+  visibility: hidden;
+  height: 0;
+  width: 100vw;
+}
+
+.open-orders {
+  position: absolute;
+  visibility: visible;
+  overflow-y: hidden;
+  height: calc(100vh - 24rem);
+  list-style: none;
+  background-color: var(--dark-gray);
+  bottom: 5rem;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+  transition: 0.4s;
+  width: 100vw;
+}
+
+.btn-orders {
+  color: var(--neon-green);
+  background: none;
+  font-size: 30px;
+  display: flex;
+  height: 75px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.buttons {
+  position: absolute;
+  top: 44rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.fa-hamburger {
+  margin: 1rem;
+}
+
+.empty-cart {
+  font-size: 2rem;
+  color: var(--light-gray);
+  text-align: center;
+}
+
+.item {
+  text-align: center;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.item p {
+  margin: 5px;
+}

@@ -10,34 +10,7 @@ export default function PageMenu() {
   const [open, setOpen] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-
-  const [addItem, setAddItem] = useState([]);
-
-  const onIncreaseItem = (name, price, id) => {
-    const exist = addItem.find((item) => item.id === id);
-
-    if (exist) {
-      setAddItem(addItem.map((item) => (
-        item.id === id ? { ...exist, quantity: exist.quantity + 1 } : item
-      )));
-    } else {
-      setAddItem([...addItem, {
-        name, price, id, quantity: 1,
-      }]);
-    }
-  };
-
-  const onDecreaseItem = (id) => {
-    const exist = addItem.find((item) => item.id === id);
-    if (exist.quantity === 1) {
-      const itemToRemove = addItem.filter((item) => item.id !== id);
-      setAddItem(itemToRemove);
-    } else {
-      setAddItem(addItem.map((item) => (
-        item.id === id ? { ...exist, quantity: exist.quantity - 1 } : item
-      )));
-    }
-  };
+  const [cartItem, setCartItems] = useState([]);
 
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
@@ -47,6 +20,27 @@ export default function PageMenu() {
         setSelectedProducts(breakfastItens);
       });
   }, []);
+
+  const onIncrease = (product) => {
+    const exist = cartItem.find((item) => item.id === product.id);
+    if (exist) {
+      setCartItems(cartItem.map((item) => (item.id === product.id
+        ? { ...exist, quantity: exist.quantity + 1 } : item)));
+    } else {
+      setCartItems([...cartItem, { ...product, quantity: 1 }]);
+    }
+  };
+
+  const onDecrease = (product) => {
+    const exist = cartItem.find((item) => item.id === product.id);
+    if (exist.quantity === 1) {
+      const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+      setCartItems(itemToRemove);
+    } else {
+      setCartItems(cartItem.map((item) => (item.id === product.id
+        ? { ...exist, quantity: exist.quantity - 1 } : item)));
+    }
+  };
 
   function filterMenu(type) {
     const selectedMenu = allProducts.filter((item) => item.type === type);
@@ -89,17 +83,13 @@ export default function PageMenu() {
         </div>
         <div className={styles['itens-container']}>
           {
-            selectedProducts.map(({
-              name, price, id,
-            }) => (
+            selectedProducts.map((product) => (
 
               <Card
-                Name={name}
-                key={id}
-                Price={price}
-                Id={id}
-                onIncrease={onIncreaseItem}
-                onDecrease={() => onDecreaseItem(id)}
+                key={product.id}
+                product={product}
+                onIncrease={onIncrease}
+                onDecrease={onDecrease}
               />
             ))
           }
@@ -119,7 +109,11 @@ export default function PageMenu() {
               <p>Qtd.</p>
               <p>Preço</p>
             </section>
-            <CartArea arrItem={addItem} />
+            <CartArea
+              cartItem={cartItem}
+              onIncrease={onIncrease}
+              onDecrease={onDecrease}
+            />
             <section className="resultOrders">
               <div className="total-price">
                 <p>Total a pagar</p>
