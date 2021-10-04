@@ -11,6 +11,7 @@ export default function PageMenu() {
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [cartItem, setCartItems] = useState([]);
+  const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.quantity, 0);
 
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
@@ -117,7 +118,7 @@ export default function PageMenu() {
             <section className="resultOrders">
               <div className="total-price">
                 <p>Total a pagar</p>
-                <p>R$ 15,00</p>
+                <p>R$ {ItemsPrice}</p>
               </div>
               <div className="buttons">
                 <button type="button" className="btn-confirm">Confirmar pedido</button>
