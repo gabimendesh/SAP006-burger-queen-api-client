@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
-import { getAllProducts } from '../../services/index';
+import { getAllProducts, sendItens } from '../../services/index';
 import Card from '../../components/card/index';
 import styles from './style.module.css';
 import Header from '../../components/header';
@@ -11,7 +11,25 @@ export default function PageMenu() {
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [cartItem, setCartItems] = useState([]);
-  const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.quantity, 0);
+  const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.qtd, 0);
+
+  const [values, setValues] = useState({
+    name: '',
+    table: '',
+    products: cartItem,
+  });
+  console.log(values);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+  const handleSubmit = () => {
+    console.log(cartItem);
+    sendItens(values.name, values.table, cartItem);
+  };
 
   useEffect(() => {
     getAllProducts(getUserTokenOnLocalStorage)
@@ -26,20 +44,20 @@ export default function PageMenu() {
     const exist = cartItem.find((item) => item.id === product.id);
     if (exist) {
       setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, quantity: exist.quantity + 1 } : item)));
+        ? { ...exist, qtd: exist.qtd + 1 } : item)));
     } else {
-      setCartItems([...cartItem, { ...product, quantity: 1 }]);
+      setCartItems([...cartItem, { ...product, qtd: 1 }]);
     }
   };
 
   const onDecrease = (product) => {
     const exist = cartItem.find((item) => item.id === product.id);
-    if (exist.quantity === 1) {
+    if (exist.qtd === 1) {
       const itemToRemove = cartItem.filter((item) => item.id !== product.id);
       setCartItems(itemToRemove);
     } else {
       setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, quantity: exist.quantity - 1 } : item)));
+        ? { ...exist, qtd: exist.qtd - 1 } : item)));
     }
   };
 
@@ -74,12 +92,16 @@ export default function PageMenu() {
             type="text"
             name="name"
             placeholder="Nome do cliente"
+            value={values.name}
+            onChange={handleChange}
           />
           <input
             className={styles['form-input']}
-            type="text"
-            name="name"
+            type="number"
+            name="table"
             placeholder="Nº da mesa"
+            value={values.table}
+            onChange={handleChange}
           />
         </div>
         <div className={styles['itens-container']}>
@@ -121,7 +143,7 @@ export default function PageMenu() {
                 <p>R$ {ItemsPrice}</p>
               </div>
               <div className="buttons">
-                <button type="button" className="btn-confirm">Confirmar pedido</button>
+                <button type="button" className="btn-confirm" onClick={handleSubmit}>Confirmar pedido</button>
                 <button type="button" className="btn-cancel">Cancelar</button>
               </div>
             </section>

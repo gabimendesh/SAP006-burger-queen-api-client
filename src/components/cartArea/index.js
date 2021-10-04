@@ -15,7 +15,7 @@ export default function CartArea(props) {
             key={item.id}
             name={item.name}
             price={item.price}
-            quantity={item.quantity}
+            quantity={item.qtd}
             increase={() => onIncrease(item)}
             decrease={() => onDecrease(item)}
           />
