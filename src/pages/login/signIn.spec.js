@@ -6,7 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import FormSignIn from './signIn';
+import Login from './index';
 
 const fakeUser = { email: 'user@test.com', password: '123password' };
 
@@ -15,7 +15,7 @@ const mockLogin = jest.fn((email, password) => Promise.resolve({ email, password
 describe('SignIn', () => {
   describe('', () => {
     it('should not display error when value is valid', async () => {
-      const { getByTestId } = render(<FormSignIn onSubmit={mockLogin} />);
+      const { getByTestId } = render(<Login onSubmit={mockLogin} />);
 
       const email = await waitFor(
         () => getByTestId('email'),
@@ -44,7 +44,7 @@ describe('SignIn', () => {
 
     it('should render the sign in form with all fields required', () => {
       const mockOnSubmit = jest.fn();
-      render(<FormSignIn onSubmit={mockOnSubmit} />);
+      render(<Login onSubmit={mockOnSubmit} />);
 
       const email = screen.getByPlaceholderText(/Digite o seu email/i);
       const password = screen.getByPlaceholderText(/Digite a sua senha/i);

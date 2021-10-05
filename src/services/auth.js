@@ -11,13 +11,12 @@ const request = (
   body: JSON.stringify(body),
 })
   .then((response) => {
-    if (!response.ok) { throw response; }
+    if (!response.ok) {
+      return response.json()
+        .then((err) => { throw new Error(err.message); });
+    }
+
     return response.json();
-  })
-  .catch(async (response) => {
-    const error = await response.json()
-      .then((text) => text);
-    return Promise.reject(error);
   });
 
 export const signInWithEmailAndPassword = (

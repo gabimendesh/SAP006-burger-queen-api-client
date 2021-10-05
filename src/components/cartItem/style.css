@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+.container-card {
+  width: 12rem;
+  height: 14.125rem;
+  margin: 1rem;
+  background: var(--dark-gray);
+  display: grid;
+  align-items: flex-end;
+  border-radius: 1rem;
+  color: var(--white);
+  font-family: Barlow, sans-serif;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: 21rem 10rem 10rem 1fr;
+  gap: 2rem;
+
+  color: var(--white);
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.8rem;
+  margin: 1rem;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 8rem;
+  border-radius: 50%;
+}
+
+.controller-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-self: flex-end;
+  border-radius: 16px;
+  background: var(--background2);
+  height: 2.875rem;
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.item {
+  text-align: center;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.item p {
+  margin: 5px;
+}
+
+.item-price {
+  text-align: center;
+}
+
+.item-name {
+  text-align: center;
+}
+
+.item-number {
+  background: var(--background2);
+  padding: 14px 12px 12px 12px;
+  border: var(--light-gray) 1px solid;
+  display: flex;
+  align-items: center;
+}
+
+.add-item-button,
+.remove-item-button {
+  color: var(--white);
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.total-price {
+  position: absolute;
+  font-size: 2rem;
+  top: 40rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+
+.trash {
+  background: none;
+  border: none;
+  text-align: start;
+}
+
+.fa-trash-alt {
+  font-size: 2.5rem;
+  color: var(--dark-pink);
+}

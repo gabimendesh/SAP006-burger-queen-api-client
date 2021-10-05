@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap');
+
+.menu {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  color: var(--neon-green);
+  width: 100%;
+  background: var(--dark-gray);
+}
+
+.menu-container {
+  background-color: var(--background);
+  background-image: url('../../images/burger-background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.toggle-menu-container {
+  height: 4rem;
+}
+
+.toggle-menu-container,
+.client-data {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: fixed;
+}
+
+.toggle-menu-container {
+  top: 90px;
+}
+
+.client-data {
+  top: 150px;
+}
+
+.option-menu-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  color: var(--white);
+  border: none;
+
+  font-size: 1.5rem;
+  font-family: Barlow, sans-serif;
+  font-weight: 600;
+}
+
+.option-menu-button:focus {
+  border-bottom: var(--neon-green) 5px solid;
+}
+
+.form-input {
+  margin: 1.5rem 0 3.75rem 0;
+  width: 15.25rem;
+  height: 3.25rem;
+  border: none;
+  border-radius: 1rem;
+
+  color: var(--white);
+  font-size: 1.5rem;
+  text-align: center;
+
+  outline: none;
+  background: var(--dark-gray);
+}
+
+.form-input::placeholder {
+  color: var(--light-gray);
+  font-size: 1.565rem;
+  text-align: center;
+}
+
+.itens-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 100px;
+  height: calc(86vh - 215px);
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: scroll;
+}

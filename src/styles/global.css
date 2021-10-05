@@ -20,12 +20,14 @@
 :root {
   --white: #ffffff;
   --dark-gray: #1f1d2b;
+  --background: #393c49;
+  --background2: #2d303e;
   --medium-gray: #393939;
   --light-gray: #625e5e;
   --dark-pink: #f25764;
   --medium-purple: #6100ff;
   --light-purple: #9290fe;
-  --neon-green: #00e000;
+  --neon-green: #42ff00;
 }
 
 body,
@@ -43,23 +45,8 @@ select {
   font: 1rem Bebas-Neue, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: var(--gray-800);
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: 5rem;
-  color: var(--dark-pink);
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
 button {
   cursor: pointer;
+  outline: none;
+  border: none;
 }
