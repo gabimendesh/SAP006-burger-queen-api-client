@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.module.css';
 
-export default function Card(props) {
+export function Card(props) {
   const { product, onIncrease } = props;
   return (
     <div className={styles['container-card']}>
@@ -23,5 +23,40 @@ export default function Card(props) {
       </div>
     </div>
 
+  );
+}
+export function CardOrder(props) {
+  const { item } = props;
+  const products = item.Products.filter((order) => order.name);
+  console.log('array de produtos', products);
+  return (
+    <div className={styles['container-card-order']}>
+      <section>
+        <div className={styles['timer-container']}>
+          <p>15 min</p>
+        </div>
+        <div className={styles['client-data']}>
+          <p>Mesa - {item.table}</p>
+          <p>Cliente - {item.client_name}</p>
+        </div>
+        <div className={styles['order-list']}>
+          <ul className={styles.products}>
+            {products.map((o) => (
+              <li key={o.id}>
+                {o.name} {o.qtd > 1 ? `${o.qtd}x` : ''} {o.flavor} {o.complement ? `+ ${o.complement}` : ''}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles['controller-order-container']}>
+          <button
+            className={styles['status-button']}
+            type="button"
+          >
+            Pendente
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }

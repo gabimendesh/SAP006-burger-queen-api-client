@@ -51,7 +51,7 @@ const requestMenu = (
 
     return response.json();
   })
-  .catch((error) => console.log(error));
+  .catch((error) => console.log('error', error));
 
 export const sendItens = (
   client, table, products,

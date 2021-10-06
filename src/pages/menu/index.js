@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getAllProducts, sendItens } from '../../services/index';
-import Card from '../../components/card/index';
+import { Card } from '../../components/card/index';
 import styles from './style.module.css';
 import Header from '../../components/header';
 import CartArea from '../../components/cartArea/index';

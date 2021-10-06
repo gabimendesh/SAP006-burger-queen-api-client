@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
-.container-card {
-  width: 12rem;
-  height: 14.125rem;
+.container-card,
+.container-card-order {
   margin: 1rem;
   background: var(--dark-gray);
-  display: grid;
-  align-items: flex-end;
   border-radius: 1rem;
   color: var(--white);
   font-family: Barlow, sans-serif;
+}
+
+.container-card {
+  display: grid;
+  width: 12rem;
+  height: 14.125rem;
+}
+
+.container-card-order {
+  width: 20rem;
+  height: 31rem;
 }
 
 .image-container {
@@ -18,21 +26,57 @@
   justify-content: center;
 }
 
+.timer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.timer-container p {
+  background: var(--background3);
+  padding: 0.5rem;
+  width: 14rem;
+  color: var(--dark-pink);
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.client-data {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.timer-container p,
+.client-data {
+  margin-top: 16px;
+}
+
 .image {
   width: 8rem;
   border-radius: 50%;
 }
 
-.controller-container {
+.controller-container,
+.controller-order-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-self: flex-end;
-  border-radius: 16px;
+  justify-content: center;
 
-  height: 2.875rem;
+  border-radius: 16px;
   color: var(--white);
   font-size: 1.5rem;
+}
+
+.controller-container {
+  height: 2.875rem;
+  align-self: flex-end;
+}
+
+.controller-order-container {
+  align-self: center;
 }
 
 .item {
@@ -55,4 +99,35 @@
   outline: none;
   font-size: 1rem;
   border-radius: 0 0 1rem 1rem;
+}
+
+.order-list {
+  display: flex;
+  height: 14rem;
+  overflow: scroll;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.status-button {
+  background-color: var(--dark-purple);
+  width: 16rem;
+  border-radius: 2.625rem;
+  color: var(--light-purple);
+  margin: 1rem;
+  height: 3.5rem;
+  font-size: 1.2rem;
+}
+
+.products {
+  width: 16rem;
+  text-align: center;
+}
+
+.products li {
+  list-style: none;
+  font-size: 1.6rem;
+  width: 100%;
+  margin-top: 12px;
 }
