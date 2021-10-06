@@ -16,6 +16,8 @@ export default function CartArea(props) {
           <CartItem
             key={item.id}
             name={item.name}
+            flavor={item.flavor}
+            complement={item.complement}
             price={item.price}
             quantity={item.qtd}
             increase={() => onIncrease(item)}

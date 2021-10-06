@@ -2,11 +2,11 @@ import React from 'react';
 import './style.css';
 
 export default function CartItem({
-  name, price, quantity, increase, decrease, cancelAnOrder,
+  name, price, flavor, complement, quantity, increase, decrease, cancelAnOrder,
 }) {
   return (
     <div className="item-list">
-      <p className="item-name">{name}</p>
+      <p className="item-name">{name} {flavor} {complement ? `+ ${complement}` : ''} </p>
 
       <div className="controller-container">
         <button
