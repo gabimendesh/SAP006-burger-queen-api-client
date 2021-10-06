@@ -2,17 +2,15 @@ import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 
-export default function Header() {
+export default function Header(props) {
+  const { children } = props;
   const [isMobile, setIsMobile] = useState(false);
   return (
     <nav className="navbar">
-      <h3 className="logo">Menu</h3>
+      <h3 className="logo">{children}</h3>
       <ul
         className={isMobile ? 'nav-links-mobile' : 'nav-links'}
       >
-        <Link to="/" className="menu">
-          <li>Menu</li>
-        </Link>
         <Link to="/" className="pedidos">
           <li>Pedidos Realizados</li>
         </Link>

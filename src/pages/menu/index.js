@@ -80,7 +80,7 @@ export default function PageMenu() {
     <>
       <div className={styles['menu-container']}>
         <header className="header">
-          <Header />
+          <Header>Menu</Header>
         </header>
         <div className={styles['toggle-menu-container']}>
           <button

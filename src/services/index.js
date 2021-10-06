@@ -50,7 +50,8 @@ const requestMenu = (
     }
 
     return response.json();
-  });
+  })
+  .catch((error) => console.log(error));
 
 export const sendItens = (
   client, table, products,
@@ -58,3 +59,21 @@ export const sendItens = (
   const token = getUserTokenOnLocalStorage;
   requestMenu('/orders', 'POST', token, { client, table, products });
 };
+
+const requestOrders = (
+  endpoint,
+  method,
+  token,
+) => fetch(`https://lab-api-bq.herokuapp.com${endpoint}`, {
+  method,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `${token}`,
+  },
+})
+  .then((response) => response.json());
+
+export const getOrders = (
+  token,
+) => requestOrders('/orders', 'GET', token);
