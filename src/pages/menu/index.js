@@ -98,6 +98,7 @@ export default function PageMenu() {
         </div>
         <div className={styles['client-data']}>
           <input
+            data-testid="client-name"
             className={styles['form-input']}
             type="text"
             name="name"
@@ -106,6 +107,7 @@ export default function PageMenu() {
             onChange={handleChange}
           />
           <input
+            data-testid="client-table"
             className={styles['form-input']}
             type="number"
             name="table"
