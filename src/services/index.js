@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { getUserTokenOnLocalStorage } from './localStorage';
 
 const request = (
@@ -77,3 +78,8 @@ const requestOrders = (
 export const getOrders = (
   token,
 ) => requestOrders('/orders', 'GET', token);
+
+const userToken = getUserTokenOnLocalStorage;
+export const updateOrder = (
+  id, status,
+) => requestMenu(`/orders/${id}`, 'PUT', userToken, { status });

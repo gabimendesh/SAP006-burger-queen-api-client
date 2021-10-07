@@ -26,8 +26,9 @@ export function Card(props) {
   );
 }
 export function CardOrder(props) {
-  const { item } = props;
+  const { item, onClick } = props;
   const products = item.Products.filter((order) => order.name);
+
   return (
     <div className={styles['container-card-order']}>
       <section>
@@ -51,8 +52,12 @@ export function CardOrder(props) {
           <button
             className={styles['status-button']}
             type="button"
+            onClick={() => {
+              onClick(item, 'Preparando');
+            }}
+
           >
-            Pendente
+            {item.status}
           </button>
         </div>
       </section>
