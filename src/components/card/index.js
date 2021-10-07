@@ -28,7 +28,6 @@ export function Card(props) {
 export function CardOrder(props) {
   const { item } = props;
   const products = item.Products.filter((order) => order.name);
-  console.log('array de produtos', products);
   return (
     <div className={styles['container-card-order']}>
       <section>

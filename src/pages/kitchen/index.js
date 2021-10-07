@@ -7,6 +7,8 @@ import styles from './style.module.css';
 
 export default function Kitchen() {
   const [order, setOrders] = useState([]);
+  const sortOrders = () => order.sort((a, b) => b.id - a.id);
+
   useEffect(() => {
     getOrders(getUserTokenOnLocalStorage)
       .then((orders) => {
@@ -14,7 +16,6 @@ export default function Kitchen() {
       });
   }, []);
 
-  console.log('pedidos', order);
   return (
     <>
       <div className={styles['kitchen-container']}>
@@ -22,7 +23,7 @@ export default function Kitchen() {
           <Header>Cozinha</Header>
         </header>
         <div className={styles['itens-container']}>
-          {order.map((item) => (
+          {sortOrders().map((item) => (
             <CardOrder key={item.id} item={item} />
           ))}
         </div>
