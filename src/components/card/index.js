@@ -26,7 +26,7 @@ export function Card(props) {
   );
 }
 export function CardOrder(props) {
-  const { item, onClick } = props;
+  const { item, onClick, orderFinished } = props;
   const products = item.Products.filter((order) => order.name);
   const dataCreated = new Date(item.createdAt);
   const dataUpdate = new Date(item.updatedAt);
@@ -67,6 +67,7 @@ export function CardOrder(props) {
             type="button"
             onClick={() => {
               onClick(item);
+              orderFinished(item);
             }}
           >
             {item.status === 'pending' ? 'Pendente' : item.status}

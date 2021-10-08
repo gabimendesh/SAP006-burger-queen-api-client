@@ -6,6 +6,7 @@ import Register from './pages/register/index';
 import Menu from './pages/menu/index';
 import Kitchen from './pages/kitchen/index';
 import { isAuthenticated } from './services/localStorage';
+import Orders from './pages/orders';
 
 export default function Routes() {
   const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -26,6 +27,7 @@ export default function Routes() {
       <Route path="/cadastro" component={Register} />
       <PrivateRoute path="/menu" component={Menu} />
       <PrivateRoute path="/cozinha" component={Kitchen} />
+      <PrivateRoute path="/pedidos" component={Orders} />
     </Switch>
   );
 }

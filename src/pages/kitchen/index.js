@@ -17,6 +17,12 @@ export default function Kitchen() {
       });
   }, [order]);
 
+  const orderFinished = (item) => {
+    const qualquercoisa = order.filter((orders) => orders.status === item.status);
+    setOrders(qualquercoisa);
+    console.log(item);
+  };
+
   const updateStatus = (item) => {
     const orderId = item.id;
     const update = () => setOrders([...order]);
@@ -51,6 +57,7 @@ export default function Kitchen() {
               key={item.id}
               item={item}
               onClick={updateStatus}
+              orderFinished={orderFinished}
             />
           ))}
         </div>

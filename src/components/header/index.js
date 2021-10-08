@@ -11,8 +11,8 @@ export default function Header(props) {
       <ul
         className={isMobile ? 'nav-links-mobile' : 'nav-links'}
       >
-        <Link to="/" className="pedidos">
-          <li>Pedidos Realizados</li>
+        <Link to="/pedidos" className="pedidos">
+          <li>Pedidos Finalizados</li>
         </Link>
         <Link to="/" className="logout">
           <li>Sair</li>
