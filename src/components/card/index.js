@@ -28,12 +28,16 @@ export function Card(props) {
 export function CardOrder(props) {
   const { item, onClick } = props;
   const products = item.Products.filter((order) => order.name);
+  const dataCreated = new Date(item.createdAt);
+  const dataUpdate = new Date(item.updatedAt);
+  const difference = Math.abs(dataUpdate) - dataCreated;
+  const minutes = Math.floor(difference / 1000 / 60);
 
   return (
     <div className={styles['container-card-order']}>
       <section>
         <div className={styles['timer-container']}>
-          <p>15 min</p>
+          <p> {minutes} min</p>
         </div>
         <div className={styles['client-data']}>
           <p>Mesa - {item.table}</p>
