@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.module.css';
 
-export default function Card(props) {
+export function Card(props) {
   const { product, onIncrease } = props;
   return (
     <div className={styles['container-card']}>
@@ -23,5 +23,56 @@ export default function Card(props) {
       </div>
     </div>
 
+  );
+}
+export function CardOrder(props) {
+  const { item, onClick } = props;
+  const products = item.Products.filter((order) => order.name);
+  const dataCreated = new Date(item.createdAt);
+  const dataUpdate = new Date(item.updatedAt);
+  const difference = Math.abs(dataUpdate) - dataCreated;
+  const minutes = Math.floor(difference / 1000 / 60);
+
+  let className = '';
+  switch (item.status) {
+    case 'pending': className = styles['status-pending-button']; break;
+    case 'Preparando': className = styles['status-preparing-button']; break;
+    case 'Finalizado': className = styles['status-finished-button']; break;
+    default:
+      className = styles['status-pending-button']; break;
+  }
+
+  return (
+    <div className={styles['container-card-order']}>
+      <section>
+        <div className={styles['timer-container']}>
+          <p> {minutes} min</p>
+        </div>
+        <div className={styles['client-data']}>
+          <p>Mesa - {item.table}</p>
+          <p>Cliente - {item.client_name}</p>
+        </div>
+        <div className={styles['order-list']}>
+          <ul className={styles.products}>
+            {products.map((o) => (
+              <li key={o.id}>
+                {o.name} {o.qtd > 1 ? `${o.qtd}x` : ''} {o.flavor} {o.complement ? `+ ${o.complement}` : ''}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles['controller-order-container']}>
+          <button
+            className={className}
+            type="button"
+            onClick={() => {
+              onClick(item);
+            }}
+          >
+            {item.status === 'pending' ? 'Pendente' : item.status}
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }

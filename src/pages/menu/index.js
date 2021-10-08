@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getAllProducts, sendItens } from '../../services/index';
-import Card from '../../components/card/index';
+import { Card } from '../../components/card/index';
 import styles from './style.module.css';
 import Header from '../../components/header';
 import CartArea from '../../components/cartArea/index';
@@ -80,7 +80,7 @@ export default function PageMenu() {
     <>
       <div className={styles['menu-container']}>
         <header className="header">
-          <Header />
+          <Header>Menu</Header>
         </header>
         <div className={styles['toggle-menu-container']}>
           <button

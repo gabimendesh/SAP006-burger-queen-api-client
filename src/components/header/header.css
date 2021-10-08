@@ -56,7 +56,7 @@
     display: block;
     visibility: visible;
     overflow-y: hidden;
-    height: calc(100vh - 840px);
+    height: calc(100vh - 866px);
     list-style: none;
     background-color: var(--dark-gray);
     top: 60px;
