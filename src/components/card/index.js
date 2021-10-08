@@ -33,6 +33,22 @@ export function CardOrder(props) {
   const difference = Math.abs(dataUpdate) - dataCreated;
   const minutes = Math.floor(difference / 1000 / 60);
 
+  let className = '';
+  switch (item.status) {
+    case 'pending': className = styles['status-pending-button']; break;
+    case 'Preparando': className = styles['status-preparing-button']; break;
+    case 'Finalizado': className = styles['status-finished-button']; break;
+    default:
+      className = styles['status-pending-button']; break;
+  }
+
+  function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    console.log((currentTime / duration) * 100);
+  }
+
+  console.log(updateProgress());
+
   return (
     <div className={styles['container-card-order']}>
       <section>
@@ -54,14 +70,13 @@ export function CardOrder(props) {
         </div>
         <div className={styles['controller-order-container']}>
           <button
-            className={styles['status-button']}
+            className={className}
             type="button"
             onClick={() => {
-              onClick(item, 'Preparando');
+              onClick(item);
             }}
-
           >
-            {item.status}
+            {item.status === 'pending' ? 'Pendente' : item.status}
           </button>
         </div>
       </section>

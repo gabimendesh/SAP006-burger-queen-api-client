@@ -15,16 +15,27 @@ export default function Kitchen() {
       .then((orders) => {
         setOrders(orders);
       });
-  }, []);
+  }, [order]);
 
   const updateStatus = (item) => {
     const orderId = item.id;
+    const update = () => setOrders([...order]);
     if (item.status === 'pending') {
       updateOrder(orderId, 'Preparando')
-        .then((response) => console.log(response));
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
     } else {
       updateOrder(orderId, 'Finalizado')
-        .then((response) => console.log(response));
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
     }
   };
 
