@@ -42,13 +42,6 @@ export function CardOrder(props) {
       className = styles['status-pending-button']; break;
   }
 
-  function updateProgress(e) {
-    const { duration, currentTime } = e.srcElement;
-    console.log((currentTime / duration) * 100);
-  }
-
-  console.log(updateProgress());
-
   return (
     <div className={styles['container-card-order']}>
       <section>
