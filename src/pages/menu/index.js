@@ -12,6 +12,16 @@ export default function PageMenu() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [cartItem, setCartItems] = useState([]);
   const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.qtd, 0);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    getAllProducts(getUserTokenOnLocalStorage())
+      .then((products) => {
+        setAllProducts(products);
+        const breakfastItens = products.filter((item) => item.type === 'breakfast');
+        setSelectedProducts(breakfastItens);
+      });
+  }, [getUserTokenOnLocalStorage()]);
 
   const [values, setValues] = useState({
     name: '',
@@ -28,17 +38,17 @@ export default function PageMenu() {
   };
 
   const handleSubmit = () => {
-    sendItens(values.name, values.table, cartItem);
-  };
-
-  useEffect(() => {
-    getAllProducts(getUserTokenOnLocalStorage)
-      .then((products) => {
-        setAllProducts(products);
-        const breakfastItens = products.filter((item) => item.type === 'breakfast');
-        setSelectedProducts(breakfastItens);
+    sendItens(values.name, values.table, cartItem)
+      .then((response) => {
+        if (response) {
+          setCartItems([]);
+          setError('');
+        }
+      })
+      .catch((errorMessage) => {
+        setError(errorMessage.message);
       });
-  }, []);
+  };
 
   const onIncrease = (product) => {
     const exist = cartItem.find((item) => item.id === product.id);
@@ -149,6 +159,7 @@ export default function PageMenu() {
               onIncrease={onIncrease}
               onDecrease={onDecrease}
               cancelAnOrder={cancelAnOrder}
+              error={error}
             />
             <section className="resultOrders">
               <div className="total-price">

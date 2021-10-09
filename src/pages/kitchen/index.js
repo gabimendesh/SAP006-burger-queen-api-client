@@ -11,17 +11,11 @@ export default function Kitchen() {
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
 
   useEffect(() => {
-    getOrders(getUserTokenOnLocalStorage)
+    getOrders(getUserTokenOnLocalStorage())
       .then((orders) => {
         setOrders(orders);
       });
   }, [order]);
-
-  const orderFinished = (item) => {
-    const qualquercoisa = order.filter((orders) => orders.status === item.status);
-    setOrders(qualquercoisa);
-    console.log(item);
-  };
 
   const updateStatus = (item) => {
     const orderId = item.id;
@@ -34,7 +28,7 @@ export default function Kitchen() {
             update();
           }
         });
-    } else {
+    } else if (item.status === 'Preparando') {
       updateOrder(orderId, 'Finalizado')
         .then((response) => {
           const exist = order.find((client) => client.id === response.id);
@@ -44,7 +38,6 @@ export default function Kitchen() {
         });
     }
   };
-
   return (
     <>
       <div className={styles['kitchen-container']}>
@@ -57,7 +50,6 @@ export default function Kitchen() {
               key={item.id}
               item={item}
               onClick={updateStatus}
-              orderFinished={orderFinished}
             />
           ))}
         </div>

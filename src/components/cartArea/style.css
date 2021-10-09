@@ -111,10 +111,14 @@
   margin: 1rem;
 }
 
-.empty-cart {
+.empty-cart,
+.error-message {
   font-size: 2rem;
-  color: var(--light-gray);
   text-align: center;
+}
+
+.empty-cart {
+  color: var(--light-gray);
 }
 
 .item {
@@ -127,4 +131,8 @@
 
 .item p {
   margin: 5px;
+}
+
+.error-message {
+  color: var(--dark-pink);
 }

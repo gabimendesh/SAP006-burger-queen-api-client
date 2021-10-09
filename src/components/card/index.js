@@ -25,8 +25,9 @@ export function Card(props) {
 
   );
 }
+
 export function CardOrder(props) {
-  const { item, onClick, orderFinished } = props;
+  const { item, onClick } = props;
   const products = item.Products.filter((order) => order.name);
   const dataCreated = new Date(item.createdAt);
   const dataUpdate = new Date(item.updatedAt);
@@ -67,7 +68,6 @@ export function CardOrder(props) {
             type="button"
             onClick={() => {
               onClick(item);
-              orderFinished(item);
             }}
           >
             {item.status === 'pending' ? 'Pendente' : item.status}
@@ -75,5 +75,25 @@ export function CardOrder(props) {
         </div>
       </section>
     </div>
+  );
+}
+
+export function CardOrderToDelivery() {
+  return (
+    <div className={styles['container-card-delivery']}>
+      <div className={styles['client-delivery-data']}>
+        <p>Mesa - 16</p>
+        <p>Cliente - Nome</p>
+      </div>
+      <div className={styles['controller-container']}>
+        <button
+          className={styles['status-delivery-button']}
+          type="button"
+        >
+          Servir
+        </button>
+      </div>
+    </div>
+
   );
 }
