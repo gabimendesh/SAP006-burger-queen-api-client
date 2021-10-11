@@ -78,12 +78,13 @@ export function CardOrder(props) {
   );
 }
 
-export function CardOrderToDelivery() {
+export function CardOrderToDelivery(props) {
+  const { item } = props;
   return (
     <div className={styles['container-card-delivery']}>
       <div className={styles['client-delivery-data']}>
-        <p>Mesa - 16</p>
-        <p>Cliente - Nome</p>
+        <p>Mesa - {item.table}</p>
+        <p>Cliente - {item.client_name}</p>
       </div>
       <div className={styles['controller-container']}>
         <button
