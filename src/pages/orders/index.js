@@ -7,7 +7,7 @@ import { CardOrderToDelivery } from '../../components/card';
 
 export default function Orders() {
   const [order, setOrders] = useState([]);
-  const [ordersToPrint, setOrdersToPrint] = useState([]);
+  const [ordersToFilter, setOrdersToFilter] = useState([]);
 
   useEffect(() => {
     getOrders(getUserTokenOnLocalStorage())
@@ -17,7 +17,7 @@ export default function Orders() {
   }, [order]);
 
   useEffect(() => {
-    setOrdersToPrint(order.filter((orders) => orders.status === 'Finalizado'));
+    setOrdersToFilter(order.filter((orders) => orders.status === 'Finalizado'));
   }, [order]);
   return (
     <>
@@ -26,7 +26,7 @@ export default function Orders() {
           <Header>Pedidos finalizados</Header>
         </header>
         <div className={styles['itens-container']}>
-          {ordersToPrint.map((item) => (
+          {ordersToFilter.map((item) => (
             <CardOrderToDelivery
               key={item.id}
               item={item}

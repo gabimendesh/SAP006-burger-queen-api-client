@@ -91,7 +91,7 @@ export function CardOrderToDelivery(props) {
           className={styles['status-delivery-button']}
           type="button"
         >
-          Servir
+          Servido
         </button>
       </div>
     </div>
