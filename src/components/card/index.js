@@ -79,7 +79,7 @@ export function CardOrder(props) {
 }
 
 export function CardOrderToDelivery(props) {
-  const { item } = props;
+  const { item, onClick } = props;
   return (
     <div className={styles['container-card-delivery']}>
       <div className={styles['client-delivery-data']}>
@@ -90,8 +90,11 @@ export function CardOrderToDelivery(props) {
         <button
           className={styles['status-delivery-button']}
           type="button"
+          onClick={() => {
+            onClick(item);
+          }}
         >
-          Servido
+          {item.status === 'Finalizado' ? 'Servido' : item.status}
         </button>
       </div>
     </div>

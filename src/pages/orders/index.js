@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/header';
 import styles from './style.module.css';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
-import { getOrders } from '../../services';
+import { getOrders, updateOrder } from '../../services';
 import { CardOrderToDelivery } from '../../components/card';
 
 export default function Orders() {
@@ -19,6 +19,37 @@ export default function Orders() {
   useEffect(() => {
     setOrdersToFilter(order.filter((orders) => orders.status === 'Finalizado'));
   }, [order]);
+
+  const updateStatus = (item) => {
+    const orderId = item.id;
+    const update = () => setOrders([...order]);
+    if (item.status === 'pending') {
+      updateOrder(orderId, 'Preparando')
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
+    } else if (item.status === 'Preparando') {
+      updateOrder(orderId, 'Finalizado')
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
+    } else if (item.status === 'Finalizado') {
+      updateOrder(orderId, 'Servido')
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
+    }
+    console.log(item.status);
+  };
   return (
     <>
       <div className={styles['orders-container']}>
@@ -30,6 +61,7 @@ export default function Orders() {
             <CardOrderToDelivery
               key={item.id}
               item={item}
+              onClick={updateStatus}
             />
           ))}
         </div>
