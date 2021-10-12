@@ -10,14 +10,13 @@ export default function Kitchen() {
 
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
 
+  const filteredOrders = sortOrders().filter((item) => item.status !== 'Servir' && item.status !== 'Servido');
+  console.log('pendente, preparando, finalizado', filteredOrders);
   useEffect(() => {
-    function toUpdate() {
-      getOrders(getUserTokenOnLocalStorage())
-        .then((orders) => {
-          setOrders(orders);
-        });
-    }
-    toUpdate();
+    getOrders(getUserTokenOnLocalStorage())
+      .then((orders) => {
+        setOrders(orders);
+      });
   }, []);
 
   const updateStatus = (item) => {
@@ -56,7 +55,7 @@ export default function Kitchen() {
           <Header>Cozinha</Header>
         </header>
         <div className={styles['itens-container']}>
-          {sortOrders().map((item) => (
+          {filteredOrders.map((item) => (
             <CardOrder
               key={item.id}
               item={item}
