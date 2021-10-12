@@ -36,6 +36,14 @@ export default function Kitchen() {
             update();
           }
         });
+    } else if (item.status === 'Finalizado') {
+      updateOrder(orderId, 'Servir')
+        .then((response) => {
+          const exist = order.find((client) => client.id === response.id);
+          if (exist) {
+            update();
+          }
+        });
     }
   };
   return (

@@ -7,7 +7,6 @@ import { CardOrderToDelivery } from '../../components/card';
 
 export default function Orders() {
   const [order, setOrders] = useState([]);
-  const [ordersToFilter, setOrdersToFilter] = useState([]);
 
   useEffect(() => {
     getOrders(getUserTokenOnLocalStorage())
@@ -16,30 +15,12 @@ export default function Orders() {
       });
   }, [order]);
 
-  useEffect(() => {
-    setOrdersToFilter(order.filter((orders) => orders.status === 'Finalizado'));
-  }, [order]);
+  const orderFilter = order.filter((orders) => orders.status === 'Servir' || orders.status === 'Servido');
 
   const updateStatus = (item) => {
     const orderId = item.id;
     const update = () => setOrders([...order]);
-    if (item.status === 'pending') {
-      updateOrder(orderId, 'Preparando')
-        .then((response) => {
-          const exist = order.find((client) => client.id === response.id);
-          if (exist) {
-            update();
-          }
-        });
-    } else if (item.status === 'Preparando') {
-      updateOrder(orderId, 'Finalizado')
-        .then((response) => {
-          const exist = order.find((client) => client.id === response.id);
-          if (exist) {
-            update();
-          }
-        });
-    } else if (item.status === 'Finalizado') {
+    if (item.status === 'Servir') {
       updateOrder(orderId, 'Servido')
         .then((response) => {
           const exist = order.find((client) => client.id === response.id);
@@ -48,7 +29,6 @@ export default function Orders() {
           }
         });
     }
-    console.log(item.status);
   };
   return (
     <>
@@ -57,7 +37,7 @@ export default function Orders() {
           <Header>Pedidos finalizados</Header>
         </header>
         <div className={styles['itens-container']}>
-          {ordersToFilter.map((item) => (
+          {orderFilter.map((item) => (
             <CardOrderToDelivery
               key={item.id}
               item={item}
