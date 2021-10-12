@@ -11,11 +11,14 @@ export default function Kitchen() {
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
 
   useEffect(() => {
-    getOrders(getUserTokenOnLocalStorage())
-      .then((orders) => {
-        setOrders(orders);
-      });
-  }, [order]);
+    function toUpdate() {
+      getOrders(getUserTokenOnLocalStorage())
+        .then((orders) => {
+          setOrders(orders);
+        });
+    }
+    toUpdate();
+  }, []);
 
   const updateStatus = (item) => {
     const orderId = item.id;

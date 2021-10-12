@@ -13,9 +13,10 @@ export default function Orders() {
       .then((orders) => {
         setOrders(orders);
       });
-  }, [order]);
+  }, []);
 
-  const orderFilter = order.filter((orders) => orders.status === 'Servir' || orders.status === 'Servido');
+  const sortOrders = () => order.sort((a, b) => b.id - a.id);
+  const orderFilter = sortOrders().filter((orders) => orders.status === 'Servir' || orders.status === 'Servido');
 
   const updateStatus = (item) => {
     const orderId = item.id;
@@ -30,6 +31,7 @@ export default function Orders() {
         });
     }
   };
+
   return (
     <>
       <div className={styles['orders-container']}>
@@ -37,13 +39,15 @@ export default function Orders() {
           <Header>Pedidos finalizados</Header>
         </header>
         <div className={styles['itens-container']}>
-          {orderFilter.map((item) => (
-            <CardOrderToDelivery
-              key={item.id}
-              item={item}
-              onClick={updateStatus}
-            />
-          ))}
+          {
+            orderFilter.map((item) => (
+              <CardOrderToDelivery
+                key={item.id}
+                item={item}
+                onClick={updateStatus}
+              />
+            ))
+          }
         </div>
       </div>
     </>

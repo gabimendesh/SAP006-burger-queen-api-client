@@ -6,18 +6,14 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import MenuPage from './index';
 
 const fakeUser = { name: 'User Test', table: '6' };
 
 describe('Card', () => {
   it('renders the current text inputs', async () => {
-    const { getByTestId } = render(
-      <BrowserRouter>
-        <MenuPage />
-      </BrowserRouter>,
-    );
+    const { getByTestId } = render(<MenuPage />, { wrapper: MemoryRouter });
 
     const inputName = await waitFor(
       () => getByTestId('client-name'),
@@ -43,11 +39,7 @@ describe('Card', () => {
   });
 
   it('should render the inputs in the document', async () => {
-    render(
-      <BrowserRouter>
-        <MenuPage />
-      </BrowserRouter>,
-    );
+    render(<MenuPage />, { wrapper: MemoryRouter });
 
     const clientName = screen.getByPlaceholderText(/Nome do cliente/i);
     const clientTable = screen.getByPlaceholderText(/Nº da mesa/i);

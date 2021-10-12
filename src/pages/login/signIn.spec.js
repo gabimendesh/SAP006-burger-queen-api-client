@@ -6,7 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import Login from './index';
 
 const fakeUser = { email: 'user@test.com', password: '123password' };
@@ -16,11 +16,7 @@ const mockLogin = jest.fn((email, password) => Promise.resolve({ email, password
 describe('SignIn', () => {
   describe('', () => {
     it('should not display error when value is valid', async () => {
-      const { getByTestId } = render(
-        <BrowserRouter>
-          <Login onSubmit={mockLogin} />
-        </BrowserRouter>,
-      );
+      const { getByTestId } = render(<Login onSubmit={mockLogin} />, { wrapper: MemoryRouter });
 
       const email = await waitFor(
         () => getByTestId('email'),
@@ -49,11 +45,7 @@ describe('SignIn', () => {
 
     it('should render the sign in form with all fields required', () => {
       const mockOnSubmit = jest.fn();
-      render(
-        <BrowserRouter>
-          <Login onSubmit={mockOnSubmit} />
-        </BrowserRouter>,
-      );
+      render(<Login onSubmit={mockOnSubmit} />, { wrapper: MemoryRouter });
 
       const email = screen.getByPlaceholderText(/Digite o seu email/i);
       const password = screen.getByPlaceholderText(/Digite a sua senha/i);

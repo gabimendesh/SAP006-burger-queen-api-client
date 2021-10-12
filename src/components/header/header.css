@@ -33,6 +33,7 @@
 .logout {
   border: 1px solid var(--neon-green);
   border-radius: 5px;
+  background: none;
 }
 
 .mobile-menu-icon {
@@ -46,14 +47,16 @@
     top: 15px;
     left: 35px;
   }
+
   .nav-links {
     visibility: hidden;
     height: 0;
     width: 100vw;
   }
+
   .nav-links-mobile {
     position: absolute;
-    display: block;
+    display: flex;
     visibility: visible;
     overflow-y: hidden;
     height: calc(100vh - 866px);
@@ -64,19 +67,25 @@
     border-radius: 0 0 20px 20px;
     width: 100vw;
     z-index: 1;
+    justify-content: center;
+    flex-direction: column;
   }
+
   .menu,
   .pedidos,
   .logout {
     color: var(--neon-green);
     text-align: center;
-    padding: 32px;
+    padding: 20px;
     width: 100%;
     text-transform: uppercase;
+    margin: 0;
   }
+
   .logout {
     border: none;
   }
+
   .mobile-menu-icon {
     display: block;
     position: absolute;

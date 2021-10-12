@@ -1,10 +1,12 @@
 import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { clearUserTokenOnLocalStorage } from '../../services/localStorage';
 import './header.css';
 
 export default function Header(props) {
   const { children } = props;
   const [isMobile, setIsMobile] = useState(false);
+  const history = useHistory();
   return (
     <nav className="navbar">
       <h3 className="logo">{children}</h3>
@@ -14,9 +16,16 @@ export default function Header(props) {
         <Link to="/pedidos" className="pedidos">
           <li>Pedidos Finalizados</li>
         </Link>
-        <Link to="/" className="logout">
-          <li>Sair</li>
-        </Link>
+        <button
+          type="button"
+          className="logout"
+          onClick={() => {
+            history.push('/');
+            clearUserTokenOnLocalStorage();
+          }}
+        >
+          Sair
+        </button>
       </ul>
       <button
         type="button"

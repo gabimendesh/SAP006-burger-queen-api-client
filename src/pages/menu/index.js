@@ -139,7 +139,7 @@ export default function PageMenu() {
             ))
           }
         </div>
-        <footer className="footer">
+        <div className={styles.footer}>
           <button
             className="btn-orders"
             type="button"
@@ -172,7 +172,7 @@ export default function PageMenu() {
               </div>
             </section>
           </div>
-        </footer>
+        </div>
       </div>
     </>
   );

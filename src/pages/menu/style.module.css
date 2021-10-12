@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap');
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue var(--dark-orange);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--dark-gray);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--background2);
+  border-radius: 20px;
+}
+
 .menu {
   font-size: 3rem;
   display: flex;
@@ -88,4 +107,29 @@
   width: 100%;
   flex-wrap: wrap;
   overflow: scroll;
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  bottom: 0;
+  width: 100vw;
+  background: var(--dark-gray);
+}
+
+@media (min-width: 1024px) {
+  .order-container {
+    display: flex;
+  }
+
+  .itens-container {
+    height: calc(100vh - 20rem);
+    bottom: 2rem;
+  }
+
+  .footer {
+    bottom: 0;
+  }
 }
