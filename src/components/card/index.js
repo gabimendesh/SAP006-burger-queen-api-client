@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './style.module.css';
+import STATUS from '../../constants/constants';
 
 export function Card(props) {
   const { product, onIncrease } = props;
@@ -36,9 +37,9 @@ export function CardOrder(props) {
 
   let className = '';
   switch (item.status) {
-    case 'pending': className = styles['status-pending-button']; break;
-    case 'Preparando': className = styles['status-preparing-button']; break;
-    case 'Finalizado': className = styles['status-finished-button']; break;
+    case STATUS.PENDING: className = styles['status-pending-button']; break;
+    case STATUS.PREPARING: className = styles['status-preparing-button']; break;
+    case STATUS.READY: className = styles['status-finished-button']; break;
     default:
       className = styles['status-pending-button']; break;
   }
@@ -70,7 +71,7 @@ export function CardOrder(props) {
               onClick(item);
             }}
           >
-            {item.status === 'pending' ? 'Pendente' : item.status}
+            {item.status === STATUS.PENDING ? 'Pendente' : item.status}
           </button>
         </div>
       </section>
@@ -83,8 +84,8 @@ export function CardOrderToDelivery(props) {
 
   let className = '';
   switch (item.status) {
-    case 'Servir': className = styles['status-delivery-button']; break;
-    case 'Servido': className = styles['status-delivered-button']; break;
+    case STATUS.DELIVERY: className = styles['status-delivery-button']; break;
+    case STATUS.DELIVERED: className = styles['status-delivered-button']; break;
     default:
       className = styles['status-pending-button']; break;
   }

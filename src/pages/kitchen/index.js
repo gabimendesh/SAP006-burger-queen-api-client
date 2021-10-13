@@ -3,6 +3,7 @@ import { getOrders, updateOrder } from '../../services';
 import Header from '../../components/header';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { CardOrder } from '../../components/card';
+import STATUS from '../../constants/constants';
 import styles from './style.module.css';
 
 export default function Kitchen() {
@@ -12,7 +13,7 @@ export default function Kitchen() {
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
 
   const filteredOrders = sortOrders()
-    .filter((item) => item.status !== 'Servir' && item.status !== 'Servido');
+    .filter((item) => item.status !== STATUS.DELIVERY && item.status !== STATUS.DELIVERED);
 
   const getAllOrders = () => {
     getOrders(token)
@@ -27,15 +28,16 @@ export default function Kitchen() {
 
   const updateStatus = (item) => {
     const orderId = item.id;
-
-    if (item.status === 'pending') {
-      updateOrder(orderId, 'Preparando').then(() => getAllOrders());
-    } else if (item.status === 'Preparando') {
-      updateOrder(orderId, 'Finalizado').then(() => getAllOrders());
-    } else if (item.status === 'Finalizado') {
-      updateOrder(orderId, 'Servir').then(() => getAllOrders());
+    if (item.status === STATUS.PENDING) {
+      updateOrder(orderId, STATUS.PREPARING).then(() => getAllOrders());
+    } else if (item.status === STATUS.PREPARING) {
+      updateOrder(orderId, STATUS.READY).then(() => getAllOrders());
+    } else if (item.status === STATUS.READY) {
+      updateOrder(orderId, STATUS.DELIVERY).then(() => getAllOrders());
     }
   };
+
+  console.log(order);
 
   return (
     <>
