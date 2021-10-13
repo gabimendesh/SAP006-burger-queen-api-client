@@ -10,7 +10,7 @@ export default function Header(props) {
   return (
     <nav className="navbar">
       <h3 className="logo">{children}</h3>
-      <ul
+      <div
         className={isMobile ? 'nav-links-mobile' : 'nav-links'}
       >
         <Link to="/pedidos" className="pedidos">
@@ -26,7 +26,7 @@ export default function Header(props) {
         >
           Sair
         </button>
-      </ul>
+      </div>
       <button
         type="button"
         className="mobile-menu-icon"

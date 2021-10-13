@@ -7,28 +7,23 @@ import { CardOrderToDelivery } from '../../components/card';
 
 export default function Orders() {
   const [order, setOrders] = useState([]);
+  const token = getUserTokenOnLocalStorage();
 
   useEffect(() => {
-    getOrders(getUserTokenOnLocalStorage())
+    getOrders(token)
       .then((orders) => {
         setOrders(orders);
       });
   }, []);
 
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
-  const orderFilter = sortOrders().filter((orders) => orders.status === 'Servir' || orders.status === 'Servido');
+  const orderFilter = sortOrders()
+    .filter((orders) => orders.status === 'Servir' || orders.status === 'Servido');
 
   const updateStatus = (item) => {
     const orderId = item.id;
-    const update = () => setOrders([...order]);
     if (item.status === 'Servir') {
-      updateOrder(orderId, 'Servido')
-        .then((response) => {
-          const exist = order.find((client) => client.id === response.id);
-          if (exist) {
-            update();
-          }
-        });
+      updateOrder(orderId, 'Servido');
     }
   };
 

@@ -39,8 +39,6 @@ export function CardOrder(props) {
     case 'pending': className = styles['status-pending-button']; break;
     case 'Preparando': className = styles['status-preparing-button']; break;
     case 'Finalizado': className = styles['status-finished-button']; break;
-    case 'Servir': className = styles['status-delivery-button']; break;
-    case 'Servido': className = styles['status-delivered-button']; break;
     default:
       className = styles['status-pending-button']; break;
   }
@@ -82,6 +80,7 @@ export function CardOrder(props) {
 
 export function CardOrderToDelivery(props) {
   const { item, onClick } = props;
+
   let className = '';
   switch (item.status) {
     case 'Servir': className = styles['status-delivery-button']; break;
@@ -89,6 +88,7 @@ export function CardOrderToDelivery(props) {
     default:
       className = styles['status-pending-button']; break;
   }
+
   return (
     <div className={styles['container-card-delivery']}>
       <div className={styles['client-delivery-data']}>
