@@ -102,7 +102,7 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 100px;
+  bottom: 58px;
   height: calc(86vh - 215px);
   width: 100%;
   flex-wrap: wrap;

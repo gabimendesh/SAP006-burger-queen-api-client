@@ -9,11 +9,15 @@ export default function Orders() {
   const [order, setOrders] = useState([]);
   const token = getUserTokenOnLocalStorage();
 
-  useEffect(() => {
+  const getAllOrders = () => {
     getOrders(token)
       .then((orders) => {
         setOrders(orders);
       });
+  };
+
+  useEffect(() => {
+    getAllOrders();
   }, []);
 
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
@@ -23,7 +27,7 @@ export default function Orders() {
   const updateStatus = (item) => {
     const orderId = item.id;
     if (item.status === 'Servir') {
-      updateOrder(orderId, 'Servido');
+      updateOrder(orderId, 'Servido').then(() => getAllOrders());
     }
   };
 

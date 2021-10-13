@@ -14,22 +14,26 @@ export default function Kitchen() {
   const filteredOrders = sortOrders()
     .filter((item) => item.status !== 'Servir' && item.status !== 'Servido');
 
-  useEffect(() => {
+  const getAllOrders = () => {
     getOrders(token)
       .then((orders) => {
         setOrders(orders);
       });
+  };
+
+  useEffect(() => {
+    getAllOrders();
   }, []);
 
   const updateStatus = (item) => {
     const orderId = item.id;
 
     if (item.status === 'pending') {
-      updateOrder(orderId, 'Preparando');
+      updateOrder(orderId, 'Preparando').then(() => getAllOrders());
     } else if (item.status === 'Preparando') {
-      updateOrder(orderId, 'Finalizado');
+      updateOrder(orderId, 'Finalizado').then(() => getAllOrders());
     } else if (item.status === 'Finalizado') {
-      updateOrder(orderId, 'Servir');
+      updateOrder(orderId, 'Servir').then(() => getAllOrders());
     }
   };
 

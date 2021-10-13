@@ -55,9 +55,9 @@ export function CardOrder(props) {
         </div>
         <div className={styles['order-list']}>
           <ul className={styles.products}>
-            {products.map((o) => (
-              <li key={o.id}>
-                {o.name} {o.qtd > 1 ? `${o.qtd}x` : ''} {o.flavor} {o.complement ? `+ ${o.complement}` : ''}
+            {products.map((order) => (
+              <li key={order.id}>
+                {order.name} {order.qtd > 1 ? `${order.qtd}x` : ''} {order.flavor} {order.complement ? `+ ${order.complement}` : ''}
               </li>
             ))}
           </ul>
