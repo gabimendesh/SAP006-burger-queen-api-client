@@ -29,7 +29,7 @@ export default function Kitchen() {
   const update = (response, item) => {
     setOrders(
       order.map((orderItem) => (orderItem.id === response.id
-        ? { ...item, status: response.status }
+        ? { ...item, status: response.status, updatedAt: new Date().toISOString() }
         : orderItem)),
     );
   };

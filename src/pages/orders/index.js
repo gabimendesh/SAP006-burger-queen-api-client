@@ -28,7 +28,7 @@ export default function Orders() {
   const update = (response, item) => {
     setOrders(
       order.map((orderItem) => (orderItem.id === response.id
-        ? { ...item, status: response.status, processedAt: response.processedAt }
+        ? { ...item, status: response.status }
         : orderItem)),
     );
   };
