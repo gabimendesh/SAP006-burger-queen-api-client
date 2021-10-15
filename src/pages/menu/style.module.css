@@ -2,7 +2,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: blue var(--dark-orange);
+  scrollbar-color: var(--medium-gray) var(--dark-gray);
 }
 
 /* Works on Chrome, Edge, and Safari */

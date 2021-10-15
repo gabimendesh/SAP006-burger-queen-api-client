@@ -13,15 +13,19 @@ export default function PageMenu() {
   const [cartItem, setCartItems] = useState([]);
   const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.qtd, 0);
   const [error, setError] = useState('');
+  const token = getUserTokenOnLocalStorage();
+
+  const getProducts = () => {
+    getAllProducts(token).then((products) => {
+      setAllProducts(products);
+      const breakfastItens = products.filter((item) => item.type === 'breakfast');
+      setSelectedProducts(breakfastItens);
+    });
+  };
 
   useEffect(() => {
-    getAllProducts(getUserTokenOnLocalStorage())
-      .then((products) => {
-        setAllProducts(products);
-        const breakfastItens = products.filter((item) => item.type === 'breakfast');
-        setSelectedProducts(breakfastItens);
-      });
-  }, [getUserTokenOnLocalStorage()]);
+    getProducts();
+  }, [token]);
 
   const [values, setValues] = useState({
     name: '',
@@ -53,8 +57,9 @@ export default function PageMenu() {
   const onIncrease = (product) => {
     const exist = cartItem.find((item) => item.id === product.id);
     if (exist) {
-      setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, qtd: exist.qtd + 1 } : item)));
+      setCartItems(
+        cartItem.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd + 1 } : item)),
+      );
     } else {
       setCartItems([...cartItem, { ...product, qtd: 1 }]);
     }
@@ -66,8 +71,9 @@ export default function PageMenu() {
       const itemToRemove = cartItem.filter((item) => item.id !== product.id);
       setCartItems(itemToRemove);
     } else {
-      setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, qtd: exist.qtd - 1 } : item)));
+      setCartItems(
+        cartItem.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd - 1 } : item)),
+      );
     }
   };
 
@@ -97,13 +103,15 @@ export default function PageMenu() {
             className={styles['option-menu-button']}
             type="button"
             onClick={() => filterMenu('breakfast')}
-          >Café da manhã
+          >
+            Café da manhã
           </button>
           <button
             className={styles['option-menu-button']}
             type="button"
             onClick={() => filterMenu('all-day')}
-          >Menu Principal
+          >
+            Menu Principal
           </button>
         </div>
         <div className={styles['client-data']}>
@@ -127,17 +135,14 @@ export default function PageMenu() {
           />
         </div>
         <div className={styles['itens-container']}>
-          {
-            selectedProducts.map((product) => (
-
-              <Card
-                key={product.id}
-                product={product}
-                onIncrease={onIncrease}
-                onDecrease={onDecrease}
-              />
-            ))
-          }
+          {selectedProducts.map((product) => (
+            <Card
+              key={product.id}
+              product={product}
+              onIncrease={onIncrease}
+              onDecrease={onDecrease}
+            />
+          ))}
         </div>
         <div className={styles.footer}>
           <button
@@ -167,8 +172,20 @@ export default function PageMenu() {
                 <p>R$ {ItemsPrice}</p>
               </div>
               <div className="buttons">
-                <button type="button" className="btn-confirm" onClick={handleSubmit}>Confirmar pedido</button>
-                <button type="button" className="btn-cancel" onClick={cancelAllOrder}>Cancelar</button>
+                <button
+                  type="button"
+                  className="btn-confirm"
+                  onClick={handleSubmit}
+                >
+                  Confirmar pedido
+                </button>
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={cancelAllOrder}
+                >
+                  Cancelar
+                </button>
               </div>
             </section>
           </div>

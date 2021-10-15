@@ -11,10 +11,9 @@ export default function Orders() {
   const token = getUserTokenOnLocalStorage();
 
   const getAllOrders = () => {
-    getOrders(token)
-      .then((orders) => {
-        setOrders(orders);
-      });
+    getOrders(token).then((orders) => {
+      setOrders(orders);
+    });
   };
 
   useEffect(() => {
@@ -22,15 +21,24 @@ export default function Orders() {
   }, []);
 
   const sortOrders = () => order.sort((a, b) => b.id - a.id);
-  const orderFilter = sortOrders()
-    .filter((orders) => orders.status
-      === STATUS.DELIVERY
-      || orders.status === STATUS.DELIVERED);
+  const orderFilter = sortOrders().filter(
+    (orders) => orders.status === STATUS.DELIVERY || orders.status === STATUS.DELIVERED,
+  );
+
+  const update = (response, item) => {
+    setOrders(
+      order.map((orderItem) => (orderItem.id === response.id
+        ? { ...item, status: response.status, processedAt: response.processedAt }
+        : orderItem)),
+    );
+  };
 
   const updateStatus = (item) => {
     const orderId = item.id;
     if (item.status === STATUS.DELIVERY) {
-      updateOrder(orderId, STATUS.DELIVERED).then(() => getAllOrders());
+      updateOrder(orderId, STATUS.DELIVERED).then((response) => {
+        update(response, item);
+      });
     }
   };
 
@@ -41,15 +49,13 @@ export default function Orders() {
           <Header>Pedidos finalizados</Header>
         </header>
         <div className={styles['itens-container']}>
-          {
-            orderFilter.map((item) => (
-              <CardOrderToDelivery
-                key={item.id}
-                item={item}
-                onClick={updateStatus}
-              />
-            ))
-          }
+          {orderFilter.map((item) => (
+            <CardOrderToDelivery
+              key={item.id}
+              item={item}
+              onClick={updateStatus}
+            />
+          ))}
         </div>
       </div>
     </>

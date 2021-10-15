@@ -29,11 +29,10 @@ export function Card(props) {
 
 export function CardOrder(props) {
   const { item, onClick } = props;
-  const products = item.Products.filter((order) => order.name);
   const dataCreated = new Date(item.createdAt);
   const dataUpdate = new Date(item.updatedAt);
   const difference = Math.abs(dataUpdate) - dataCreated;
-  const minutes = Math.floor(difference / 1000 / 60);
+  const minute = Math.floor(difference / 1000 / 60);
 
   let className = '';
   switch (item.status) {
@@ -48,7 +47,7 @@ export function CardOrder(props) {
     <div className={styles['container-card-order']}>
       <section>
         <div className={styles['timer-container']}>
-          <p> {minutes} min</p>
+          <p> {minute} min</p>
         </div>
         <div className={styles['client-data']}>
           <p>Mesa - {item.table}</p>
@@ -56,7 +55,7 @@ export function CardOrder(props) {
         </div>
         <div className={styles['order-list']}>
           <ul className={styles.products}>
-            {products.map((order) => (
+            {item.Products.map((order) => (
               <li key={order.id}>
                 {order.name} {order.qtd > 1 ? `${order.qtd}x` : ''} {order.flavor} {order.complement ? `+ ${order.complement}` : ''}
               </li>
