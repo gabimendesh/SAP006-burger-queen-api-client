@@ -91,8 +91,8 @@ rapidamente aos clientes.
 - [ ] **Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)**
 - [ ] **Planejar e executar testes de usabilidade**
 
-## 5. AUTORAS:
+## 5. Autoras:
 Projeto realizado para o Bootcamp da **LABORATÓRIA.**
-<h2 align="center">
+<h3 align="center">
 <a style="color:aqua" href="https://github.com/gabimendesh" target="_blank">Gabrielly Mendes</a> e 
-<a style="color:aqua" href="https://github.com/mayarabezerra">Mayara Bezerra</a></h2>
+<a style="color:aqua" href="https://github.com/mayarabezerra">Mayara Bezerra</a></h3>
