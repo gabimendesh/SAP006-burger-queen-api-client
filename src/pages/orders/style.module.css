@@ -15,9 +15,22 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  top: 8rem;
-  height: 100vh;
+  top: 10rem;
+  height: 88vh;
   width: 100%;
   flex-wrap: wrap;
   overflow: scroll;
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.refresh-btn {
+  color: var(--neon-green);
+  background: none;
+  opacity: 50%;
+  font-size: 2rem;
 }

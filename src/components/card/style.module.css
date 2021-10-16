@@ -165,12 +165,6 @@
   color: var(--light-purple);
 }
 
-.status-delivery-button,
-.status-delivered-button {
-  position: relative;
-  top: 3rem;
-}
-
 .status-delivery-button {
   background-color: var(--dark-orange);
   color: var(--light-orange);

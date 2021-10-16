@@ -17,3 +17,16 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.refresh-btn {
+  color: var(--neon-green);
+  background: none;
+  opacity: 50%;
+  font-size: 2rem;
+}

@@ -5,15 +5,20 @@ import { Card } from '../../components/card/index';
 import styles from './style.module.css';
 import Header from '../../components/header';
 import CartArea from '../../components/cartArea/index';
+import useForm from '../../services/useForm';
+import Input from '../../components/input';
 
 export default function PageMenu() {
   const [open, setOpen] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [cartItem, setCartItems] = useState([]);
-  const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.qtd, 0);
+  const [cartItems, setCartItems] = useState([]);
+  const ItemsPrice = cartItems.reduce((a, c) => a + c.price * c.qtd, 0);
   const [error, setError] = useState('');
   const token = getUserTokenOnLocalStorage();
+  const {
+    handleClientChange, client,
+  } = useForm();
 
   const getProducts = () => {
     getAllProducts(token).then((products) => {
@@ -27,22 +32,8 @@ export default function PageMenu() {
     getProducts();
   }, [token]);
 
-  const [values, setValues] = useState({
-    name: '',
-    table: '',
-    products: cartItem,
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
   const handleSubmit = () => {
-    sendItens(values.name, values.table, cartItem)
+    sendItens(client.name, client.table, cartItems)
       .then((response) => {
         if (response) {
           setCartItems([]);
@@ -55,35 +46,35 @@ export default function PageMenu() {
   };
 
   const onIncrease = (product) => {
-    const exist = cartItem.find((item) => item.id === product.id);
+    const exist = cartItems.find((item) => item.id === product.id);
     if (exist) {
       setCartItems(
-        cartItem.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd + 1 } : item)),
+        cartItems.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd + 1 } : item)),
       );
     } else {
-      setCartItems([...cartItem, { ...product, qtd: 1 }]);
+      setCartItems([...cartItems, { ...product, qtd: 1 }]);
     }
   };
 
   const onDecrease = (product) => {
-    const exist = cartItem.find((item) => item.id === product.id);
+    const exist = cartItems.find((item) => item.id === product.id);
     if (exist.qtd === 1) {
-      const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+      const itemToRemove = cartItems.filter((item) => item.id !== product.id);
       setCartItems(itemToRemove);
     } else {
       setCartItems(
-        cartItem.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd - 1 } : item)),
+        cartItems.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd - 1 } : item)),
       );
     }
   };
 
   const cancelAllOrder = () => {
-    const product = cartItem.filter((item) => !item);
+    const product = cartItems.filter((item) => !item);
     setCartItems(product);
   };
 
   const cancelAnOrder = (product) => {
-    const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+    const itemToRemove = cartItems.filter((item) => item.id !== product.id);
     setCartItems(itemToRemove);
   };
 
@@ -115,23 +106,23 @@ export default function PageMenu() {
           </button>
         </div>
         <div className={styles['client-data']}>
-          <input
+          <Input
             data-testid="client-name"
             className={styles['form-input']}
             type="text"
             name="name"
             placeholder="Nome do cliente"
-            value={values.name}
-            onChange={handleChange}
+            value={client.name}
+            onChange={handleClientChange}
           />
-          <input
+          <Input
             data-testid="client-table"
             className={styles['form-input']}
             type="number"
             name="table"
             placeholder="Nº da mesa"
-            value={values.table}
-            onChange={handleChange}
+            value={client.table}
+            onChange={handleClientChange}
           />
         </div>
         <div className={styles['itens-container']}>
@@ -160,7 +151,7 @@ export default function PageMenu() {
               <p>Preço</p>
             </section>
             <CartArea
-              cartItem={cartItem}
+              cartItems={cartItems}
               onIncrease={onIncrease}
               onDecrease={onDecrease}
               cancelAnOrder={cancelAnOrder}

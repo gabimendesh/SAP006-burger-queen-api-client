@@ -4,15 +4,15 @@ import styles from './style.module.css';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getOrders, updateOrder } from '../../services';
 import STATUS from '../../constants/constants';
-import { CardOrderToDelivery } from '../../components/card';
+import { CardOrder } from '../../components/card';
 
 export default function Orders() {
-  const [order, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
   const token = getUserTokenOnLocalStorage();
 
   const getAllOrders = () => {
-    getOrders(token).then((orders) => {
-      setOrders(orders);
+    getOrders(token).then((order) => {
+      setOrders(order);
     });
   };
 
@@ -20,14 +20,14 @@ export default function Orders() {
     getAllOrders();
   }, []);
 
-  const sortOrders = () => order.sort((a, b) => b.id - a.id);
+  const sortOrders = () => orders.sort((a, b) => b.id - a.id);
   const orderFilter = sortOrders().filter(
-    (orders) => orders.status === STATUS.DELIVERY || orders.status === STATUS.DELIVERED,
+    (order) => order.status === STATUS.DELIVERY || order.status === STATUS.DELIVERED,
   );
 
   const update = (response, item) => {
     setOrders(
-      order.map((orderItem) => (orderItem.id === response.id
+      orders.map((orderItem) => (orderItem.id === response.id
         ? { ...item, status: response.status }
         : orderItem)),
     );
@@ -48,9 +48,18 @@ export default function Orders() {
         <header className="header">
           <Header>Histórico de Pedidos</Header>
         </header>
+        <div className={styles.refresh}>
+          <button
+            type="button"
+            className={styles['refresh-btn']}
+            onClick={() => getAllOrders()}
+          >
+            <i className="fas fa-sync" />
+          </button>
+        </div>
         <div className={styles['itens-container']}>
           {orderFilter.map((item) => (
-            <CardOrderToDelivery
+            <CardOrder
               key={item.id}
               item={item}
               onClick={updateStatus}

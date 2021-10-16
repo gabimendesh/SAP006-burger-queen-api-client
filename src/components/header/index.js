@@ -14,7 +14,7 @@ export default function Header(props) {
         className={isMobile ? 'nav-links-mobile' : 'nav-links'}
       >
         <Link to="/pedidos" className="pedidos">
-          <li>Pedidos Finalizados</li>
+          Pedidos Finalizados
         </Link>
         <button
           type="button"

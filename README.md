@@ -3,18 +3,19 @@
 ## Índice
 
 - [1. Sobre o Projeto](#1-projeto)
-- [2. ](#2-prototipo)
+- [2. Protótipo](#2-prototipo)
 - [3. Histórias do usuário](#4-historias-usuario)
 - [4. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [5. Autoras](#4-autoras)
 
-
 ---
 
 ## 1. Sobre o projeto
+
 Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
 
 ## 2. Protótipo
+
 O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também foram realizados testes de usabilidade para usuários.
 
 //imagem protótipo
@@ -25,7 +26,6 @@ O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também 
 #### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
-
 
 #### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
 
@@ -38,7 +38,6 @@ cozinha para serem preparados em ordem.
 Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
 marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido
 está pronto para ser entregue ao cliente.
-
 
 #### [Historia de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
 
@@ -88,4 +87,5 @@ rapidamente aos clientes.
 - [ ] **Planejar e executar testes de usabilidade**
 
 ## 5. AUTORAS:
+
 Projeto realizado para o Bootcamp da **LABORATÓRIA.**

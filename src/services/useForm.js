@@ -17,8 +17,21 @@ const useForm = () => {
     });
   };
 
+  const [client, setClient] = useState({
+    name: '',
+    table: '',
+    products: [],
+  });
+
+  const handleClientChange = (e) => {
+    const { name, value } = e.target;
+    setClient({
+      ...client,
+      [name]: value,
+    });
+  };
   return {
-    handleChange, values,
+    handleChange, values, handleClientChange, client,
   };
 };
 

@@ -7,18 +7,18 @@ import STATUS from '../../constants/constants';
 import styles from './style.module.css';
 
 export default function Kitchen() {
-  const [order, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
   const token = getUserTokenOnLocalStorage();
 
-  const sortOrders = () => order.sort((a, b) => b.id - a.id);
+  const sortOrders = () => orders.sort((a, b) => b.id - a.id);
 
   const filteredOrders = sortOrders().filter(
     (item) => item.status !== STATUS.DELIVERY && item.status !== STATUS.DELIVERED,
   );
 
   const getAllOrders = () => {
-    getOrders(token).then((orders) => {
-      setOrders(orders);
+    getOrders(token).then((order) => {
+      setOrders(order);
     });
   };
 
@@ -28,8 +28,12 @@ export default function Kitchen() {
 
   const update = (response, item) => {
     setOrders(
-      order.map((orderItem) => (orderItem.id === response.id
-        ? { ...item, status: response.status, updatedAt: new Date().toISOString() }
+      orders.map((orderItem) => (orderItem.id === response.id
+        ? {
+          ...item,
+          status: response.status,
+          updatedAt: new Date().toISOString(),
+        }
         : orderItem)),
     );
   };
@@ -57,6 +61,15 @@ export default function Kitchen() {
         <header className="header">
           <Header>Cozinha</Header>
         </header>
+        <div className={styles.refresh}>
+          <button
+            type="button"
+            className={styles['refresh-btn']}
+            onClick={() => getAllOrders()}
+          >
+            <i className="fas fa-sync" />
+          </button>
+        </div>
         <div className={styles['itens-container']}>
           {filteredOrders.map((item) => (
             <CardOrder key={item.id} item={item} onClick={updateStatus} />

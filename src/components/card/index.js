@@ -39,6 +39,8 @@ export function CardOrder(props) {
     case STATUS.PENDING: className = styles['status-pending-button']; break;
     case STATUS.PREPARING: className = styles['status-preparing-button']; break;
     case STATUS.READY: className = styles['status-finished-button']; break;
+    case STATUS.DELIVERY: className = styles['status-delivery-button']; break;
+    case STATUS.DELIVERED: className = styles['status-delivered-button']; break;
     default:
       className = styles['status-pending-button']; break;
   }
@@ -75,38 +77,5 @@ export function CardOrder(props) {
         </div>
       </section>
     </div>
-  );
-}
-
-export function CardOrderToDelivery(props) {
-  const { item, onClick } = props;
-
-  let className = '';
-  switch (item.status) {
-    case STATUS.DELIVERY: className = styles['status-delivery-button']; break;
-    case STATUS.DELIVERED: className = styles['status-delivered-button']; break;
-    default:
-      className = styles['status-pending-button']; break;
-  }
-
-  return (
-    <div className={styles['container-card-delivery']}>
-      <div className={styles['client-delivery-data']}>
-        <p>Mesa - {item.table}</p>
-        <p>Cliente - {item.client_name}</p>
-      </div>
-      <div className={styles['controller-container']}>
-        <button
-          className={className}
-          type="button"
-          onClick={() => {
-            onClick(item);
-          }}
-        >
-          {item.status}
-        </button>
-      </div>
-    </div>
-
   );
 }
