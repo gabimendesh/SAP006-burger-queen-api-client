@@ -46,7 +46,7 @@ export default function Orders() {
     <>
       <div className={styles['orders-container']}>
         <header className="header">
-          <Header>Pedidos finalizados</Header>
+          <Header>Histórico de Pedidos</Header>
         </header>
         <div className={styles['itens-container']}>
           {orderFilter.map((item) => (
