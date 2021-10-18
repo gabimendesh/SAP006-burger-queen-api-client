@@ -15,8 +15,8 @@ The emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a
 
 |Login:                 ||
 | --------------------------- |------------------- |
-|E-mail: usuario@gmail.com     ||
-|Senha: 1234565                ||
+|E-mail: usuariocozinha@gmail.com     ||
+|Senha: cozinha123                ||
 
 
 ## 2. Protótipo
