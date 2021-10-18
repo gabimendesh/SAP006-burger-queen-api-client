@@ -31,6 +31,5 @@
 .refresh-btn {
   color: var(--neon-green);
   background: none;
-  opacity: 50%;
   font-size: 2rem;
 }
