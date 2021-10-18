@@ -33,7 +33,7 @@ O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também 
 <h3> Página de Menu e Cozinha <h3>
 <img src="https://user-images.githubusercontent.com/83085157/137807474-56d326e1-c7ff-48b9-b35e-1ba51e5a970b.png" height="420">
 
-<h3> Paleta de Cores </h3>
+<h3> Paleta de Cores 🎨 </h3>
   <img src="https://user-images.githubusercontent.com/83085157/137596857-3926fcfa-10c6-4e80-8ea9-95cdf8ed5752.png" height="250">
 
 ## 3. Histórias do usuário
