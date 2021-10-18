@@ -2,11 +2,11 @@
     <img src="https://raw.githubusercontent.com/mayarabezerra/SAP006-burger-queen-api-client/main/src/images/logo.png">
 </h1>
 
-- [1. Sobre o Projeto](#1-projeto)
+- [1. Sobre o Projeto](#1-sobre-o-projeto)
 - [2. Protótipo](#2-prototipo)
-- [3. Histórias do usuário](#4-historias-usuario)
-- [4. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
-- [5. Autoras](#4-autoras)
+- [3. Histórias do usuário](#3-historias-do-usuario)
+- [4. Objetivos de aprendizagem](#4-objetivos-de-aprendizagem)
+- [5. Autoras](#5-autoras)
 
 ## 1. Sobre o projeto 🍔
 The Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
