@@ -59,11 +59,14 @@ está pronto para ser entregue ao cliente.
 Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
 rapidamente aos clientes.
 
-## 4. Tecnologias
-
-- [ ] 
-- [ ] 
-- [ ] 
+## 4. Tecnologias 💻
+- React JS
+- CSS modules
+- Jest 
+- Eslint
+- Git e Github 
+- HTTP
+- Figma
 
 ## 5. Autoras:
 Projeto desenvolvido durante o Bootcamp da **LABORATÓRIA.**
