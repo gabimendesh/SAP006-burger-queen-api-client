@@ -1,4 +1,4 @@
-.kitchen-container {
+.orders-container {
   background-color: var(--background);
   background-image: url('../../images/burger-background.png');
   background-repeat: no-repeat;
@@ -13,9 +13,13 @@
 
 .itens-container {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  top: 10rem;
+  height: 88vh;
+  width: 100%;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  overflow: scroll;
 }
 
 .refresh {

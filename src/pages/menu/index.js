@@ -5,69 +5,76 @@ import { Card } from '../../components/card/index';
 import styles from './style.module.css';
 import Header from '../../components/header';
 import CartArea from '../../components/cartArea/index';
+import useForm from '../../services/useForm';
+import Input from '../../components/input';
 
 export default function PageMenu() {
   const [open, setOpen] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [cartItem, setCartItems] = useState([]);
-  const ItemsPrice = cartItem.reduce((a, c) => a + c.price * c.qtd, 0);
+  const [cartItems, setCartItems] = useState([]);
+  const ItemsPrice = cartItems.reduce((a, c) => a + c.price * c.qtd, 0);
+  const [error, setError] = useState('');
+  const token = getUserTokenOnLocalStorage();
+  const {
+    handleClientChange, client,
+  } = useForm();
 
-  const [values, setValues] = useState({
-    name: '',
-    table: '',
-    products: cartItem,
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
+  const getProducts = () => {
+    getAllProducts(token).then((products) => {
+      setAllProducts(products);
+      const breakfastItens = products.filter((item) => item.type === 'breakfast');
+      setSelectedProducts(breakfastItens);
     });
   };
 
+  useEffect(() => {
+    getProducts();
+  }, [token]);
+
   const handleSubmit = () => {
-    sendItens(values.name, values.table, cartItem);
+    sendItens(client.name, client.table, cartItems)
+      .then((response) => {
+        if (response) {
+          setCartItems([]);
+          setError('');
+        }
+      })
+      .catch((errorMessage) => {
+        setError(errorMessage.message);
+      });
   };
 
-  useEffect(() => {
-    getAllProducts(getUserTokenOnLocalStorage)
-      .then((products) => {
-        setAllProducts(products);
-        const breakfastItens = products.filter((item) => item.type === 'breakfast');
-        setSelectedProducts(breakfastItens);
-      });
-  }, []);
-
   const onIncrease = (product) => {
-    const exist = cartItem.find((item) => item.id === product.id);
+    const exist = cartItems.find((item) => item.id === product.id);
     if (exist) {
-      setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, qtd: exist.qtd + 1 } : item)));
+      setCartItems(
+        cartItems.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd + 1 } : item)),
+      );
     } else {
-      setCartItems([...cartItem, { ...product, qtd: 1 }]);
+      setCartItems([...cartItems, { ...product, qtd: 1 }]);
     }
   };
 
   const onDecrease = (product) => {
-    const exist = cartItem.find((item) => item.id === product.id);
+    const exist = cartItems.find((item) => item.id === product.id);
     if (exist.qtd === 1) {
-      const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+      const itemToRemove = cartItems.filter((item) => item.id !== product.id);
       setCartItems(itemToRemove);
     } else {
-      setCartItems(cartItem.map((item) => (item.id === product.id
-        ? { ...exist, qtd: exist.qtd - 1 } : item)));
+      setCartItems(
+        cartItems.map((item) => (item.id === product.id ? { ...exist, qtd: exist.qtd - 1 } : item)),
+      );
     }
   };
 
   const cancelAllOrder = () => {
-    const product = cartItem.filter((item) => !item);
+    const product = cartItems.filter((item) => !item);
     setCartItems(product);
   };
 
   const cancelAnOrder = (product) => {
-    const itemToRemove = cartItem.filter((item) => item.id !== product.id);
+    const itemToRemove = cartItems.filter((item) => item.id !== product.id);
     setCartItems(itemToRemove);
   };
 
@@ -87,49 +94,48 @@ export default function PageMenu() {
             className={styles['option-menu-button']}
             type="button"
             onClick={() => filterMenu('breakfast')}
-          >Café da manhã
+          >
+            Café da manhã
           </button>
           <button
             className={styles['option-menu-button']}
             type="button"
             onClick={() => filterMenu('all-day')}
-          >Menu Principal
+          >
+            Menu Principal
           </button>
         </div>
         <div className={styles['client-data']}>
-          <input
+          <Input
             data-testid="client-name"
             className={styles['form-input']}
             type="text"
             name="name"
             placeholder="Nome do cliente"
-            value={values.name}
-            onChange={handleChange}
+            value={client.name}
+            onChange={handleClientChange}
           />
-          <input
+          <Input
             data-testid="client-table"
             className={styles['form-input']}
             type="number"
             name="table"
             placeholder="Nº da mesa"
-            value={values.table}
-            onChange={handleChange}
+            value={client.table}
+            onChange={handleClientChange}
           />
         </div>
         <div className={styles['itens-container']}>
-          {
-            selectedProducts.map((product) => (
-
-              <Card
-                key={product.id}
-                product={product}
-                onIncrease={onIncrease}
-                onDecrease={onDecrease}
-              />
-            ))
-          }
+          {selectedProducts.map((product) => (
+            <Card
+              key={product.id}
+              product={product}
+              onIncrease={onIncrease}
+              onDecrease={onDecrease}
+            />
+          ))}
         </div>
-        <footer className="footer">
+        <div className={styles.footer}>
           <button
             className="btn-orders"
             type="button"
@@ -145,10 +151,11 @@ export default function PageMenu() {
               <p>Preço</p>
             </section>
             <CartArea
-              cartItem={cartItem}
+              cartItems={cartItems}
               onIncrease={onIncrease}
               onDecrease={onDecrease}
               cancelAnOrder={cancelAnOrder}
+              error={error}
             />
             <section className="resultOrders">
               <div className="total-price">
@@ -156,12 +163,24 @@ export default function PageMenu() {
                 <p>R$ {ItemsPrice}</p>
               </div>
               <div className="buttons">
-                <button type="button" className="btn-confirm" onClick={handleSubmit}>Confirmar pedido</button>
-                <button type="button" className="btn-cancel" onClick={cancelAllOrder}>Cancelar</button>
+                <button
+                  type="button"
+                  className="btn-confirm"
+                  onClick={handleSubmit}
+                >
+                  Confirmar pedido
+                </button>
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={cancelAllOrder}
+                >
+                  Cancelar
+                </button>
               </div>
             </section>
           </div>
-        </footer>
+        </div>
       </div>
     </>
   );

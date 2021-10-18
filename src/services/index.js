@@ -1,6 +1,8 @@
 /* eslint-disable no-irregular-whitespace */
 import { getUserTokenOnLocalStorage } from './localStorage';
 
+const userToken = getUserTokenOnLocalStorage();
+
 const request = (
   endpoint,
   method,
@@ -51,35 +53,16 @@ const requestMenu = (
     }
 
     return response.json();
-  })
-  .catch((error) => console.log('error', error));
+  });
 
 export const sendItens = (
   client, table, products,
-) => {
-  const token = getUserTokenOnLocalStorage;
-  requestMenu('/orders', 'POST', token, { client, table, products });
-};
-
-const requestOrders = (
-  endpoint,
-  method,
-  token,
-) => fetch(`https://lab-api-bq.herokuapp.com${endpoint}`, {
-  method,
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    Authorization: `${token}`,
-  },
-})
-  .then((response) => response.json());
+) => requestMenu('/orders', 'POST', userToken, { client, table, products });
 
 export const getOrders = (
   token,
-) => requestOrders('/orders', 'GET', token);
+) => request('/orders', 'GET', token);
 
-const userToken = getUserTokenOnLocalStorage;
 export const updateOrder = (
   id, status,
 ) => requestMenu(`/orders/${id}`, 'PUT', userToken, { status });

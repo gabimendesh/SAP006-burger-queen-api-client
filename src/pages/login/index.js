@@ -7,11 +7,10 @@ import useForm from '../../services/useForm';
 import { signInWithEmailAndPassword } from '../../services/auth';
 import { saveUserTokenOnLocalStorage } from '../../services/localStorage';
 import logo from '../../images/logo.png';
+import Input from '../../components/input';
 
 export default function Login({ submitForm }) {
-  const {
-    handleChange, values,
-  } = useForm(submitForm);
+  const { handleChange, values } = useForm(submitForm);
 
   const history = useHistory();
   const [error, setError] = useState('');
@@ -45,10 +44,8 @@ export default function Login({ submitForm }) {
                   });
               }}
             >
-              <p className={styles.subTitle}>
-                Login
-              </p>
-              <input
+              <p className={styles.subTitle}>Login</p>
+              <Input
                 data-testid="email"
                 type="email"
                 name="email"
@@ -57,7 +54,7 @@ export default function Login({ submitForm }) {
                 value={values.email}
                 onChange={handleChange}
               />
-              <input
+              <Input
                 data-testid="password"
                 type="password"
                 name="password"
@@ -66,11 +63,13 @@ export default function Login({ submitForm }) {
                 value={values.password}
                 onChange={handleChange}
               />
-              <p className={styles.error}>
-                {error}
-              </p>
+              <p className={styles.error}>{error}</p>
 
-              <Button variant="primary" onClick={() => history.push('/menu')} id="buttom">
+              <Button
+                variant="primary"
+                onClick={() => history.push('/menu')}
+                id="buttom"
+              >
                 Entrar
               </Button>
             </form>

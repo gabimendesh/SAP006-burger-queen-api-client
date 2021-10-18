@@ -2,14 +2,11 @@
     <img src="https://raw.githubusercontent.com/mayarabezerra/SAP006-burger-queen-api-client/main/src/images/logo.png">
 </h1>
 
-## Índice
-- [1. Sobre o Projeto]
-- [2. Protótipo]
-- [3. Histórias do usuário]
-- [4. Objetivos de aprendizagem]
-- [5. Interface]
-- [5. Autoras]
-
+- [1. Sobre o Projeto](#1-projeto)
+- [2. Protótipo](#2-prototipo)
+- [3. Histórias do usuário](#4-historias-usuario)
+- [4. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
+- [5. Autoras](#4-autoras)
 
 ## 1. Sobre o projeto 🍔
 The emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
@@ -39,7 +36,6 @@ O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também 
 
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
 
-
 #### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
 
 Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
@@ -51,7 +47,6 @@ cozinha para serem preparados em ordem.
 Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
 marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido
 está pronto para ser entregue ao cliente.
-
 
 #### [Historia de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
 
@@ -69,3 +64,4 @@ Projeto desenvolvido durante o Bootcamp da **LABORATÓRIA.**
 <h3 align="center">
 <a style="color:aqua" href="https://github.com/gabimendesh" target="_blank">Gabrielly Mendes</a> e 
 <a style="color:aqua" href="https://github.com/mayarabezerra">Mayara Bezerra</a></h3>
+

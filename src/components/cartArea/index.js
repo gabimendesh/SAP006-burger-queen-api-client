@@ -4,15 +4,16 @@ import './style.css';
 
 export default function CartArea(props) {
   const {
-    cartItem, onIncrease, onDecrease, cancelAnOrder,
+    cartItems, onIncrease, onDecrease, cancelAnOrder, error,
   } = props;
   return (
     <section className="item-list-container">
       <div>
-        {cartItem.length === 0 && <p className="empty-cart">Anotar pedidos</p>}
+        {cartItems.length === 0 && <p className="empty-cart">Anotar pedidos</p>}
+        {error && <p className="error-message">{error}</p>}
       </div>
       {
-        cartItem.map((item) => (
+        cartItems.map((item) => (
           <CartItem
             key={item.id}
             name={item.name}

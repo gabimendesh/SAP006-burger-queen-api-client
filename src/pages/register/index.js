@@ -4,6 +4,7 @@ import { signUp } from '../../services/auth';
 import Title from '../../images/Title.png';
 import useForm from '../../services/useForm';
 import styles from './style.module.css';
+import Input from '../../components/input';
 
 export default function Register({ submitForm }) {
   const {
@@ -56,7 +57,7 @@ export default function Register({ submitForm }) {
           <h1 className={styles.register}>
             Registrar Funcionário
           </h1>
-          <input
+          <Input
             className={styles['form-input']}
             type="text"
             name="name"
@@ -64,7 +65,7 @@ export default function Register({ submitForm }) {
             value={values.name}
             onChange={handleChange}
           />
-          <input
+          <Input
             className={styles['form-input']}
             type="email"
             name="email"
@@ -72,7 +73,7 @@ export default function Register({ submitForm }) {
             value={values.email}
             onChange={handleChange}
           />
-          <input
+          <Input
             className={styles['form-input']}
             type="password"
             name="password"

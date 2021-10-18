@@ -25,7 +25,7 @@ export default function CartItem({
           +
         </button>
       </div>
-      <p className="item-price">{price}</p>
+      <p className="item-price">R${price}</p>
       <button
         type="button"
         id="delete-order"

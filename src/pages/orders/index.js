@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { getOrders, updateOrder } from '../../services';
 import Header from '../../components/header';
-import { getUserTokenOnLocalStorage } from '../../services/localStorage';
-import { CardOrder } from '../../components/card';
-import status from '../../constants/constants';
 import styles from './style.module.css';
+import { getUserTokenOnLocalStorage } from '../../services/localStorage';
+import { getOrders, updateOrder } from '../../services';
+import status from '../../constants/constants';
+import { CardOrder } from '../../components/card';
 
-export default function Kitchen() {
+export default function Orders() {
   const [orders, setOrders] = useState([]);
   const token = getUserTokenOnLocalStorage();
-
-  const sortOrders = () => orders.sort((a, b) => b.id - a.id);
-
-  const filteredOrders = sortOrders().filter(
-    (item) => item.status !== status.delivery && item.status !== status.delivered,
-  );
 
   const getAllOrders = () => {
     getOrders(token).then((order) => {
@@ -24,32 +18,25 @@ export default function Kitchen() {
 
   useEffect(() => {
     getAllOrders();
-  }, [token]);
+  }, []);
+
+  const sortOrders = () => orders.sort((a, b) => b.id - a.id);
+  const orderFilter = sortOrders().filter(
+    (order) => order.status === status.delivery || order.status === status.delivered,
+  );
 
   const update = (response, item) => {
     setOrders(
       orders.map((orderItem) => (orderItem.id === response.id
-        ? {
-          ...item,
-          status: response.status,
-          updatedAt: new Date().toISOString(),
-        }
+        ? { ...item, status: response.status }
         : orderItem)),
     );
   };
 
   const updateStatus = (item) => {
     const orderId = item.id;
-    if (item.status === status.pending) {
-      updateOrder(orderId, status.preparing).then((response) => {
-        update(response, item);
-      });
-    } else if (item.status === status.preparing) {
-      updateOrder(orderId, status.ready).then((response) => {
-        update(response, item);
-      });
-    } else if (item.status === status.ready) {
-      updateOrder(orderId, status.delivery).then((response) => {
+    if (item.status === status.delivery) {
+      updateOrder(orderId, status.delivered).then((response) => {
         update(response, item);
       });
     }
@@ -57,9 +44,9 @@ export default function Kitchen() {
 
   return (
     <>
-      <div className={styles['kitchen-container']}>
+      <div className={styles['orders-container']}>
         <header className="header">
-          <Header>Cozinha</Header>
+          <Header>Histórico de Pedidos</Header>
         </header>
         <div className={styles.refresh}>
           <button
@@ -71,8 +58,12 @@ export default function Kitchen() {
           </button>
         </div>
         <div className={styles['itens-container']}>
-          {filteredOrders.map((item) => (
-            <CardOrder key={item.id} item={item} onClick={updateStatus} />
+          {orderFilter.map((item) => (
+            <CardOrder
+              key={item.id}
+              item={item}
+              onClick={updateStatus}
+            />
           ))}
         </div>
       </div>

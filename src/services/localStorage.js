@@ -2,7 +2,8 @@ export const saveUserTokenOnLocalStorage = (token) => {
   localStorage.setItem('token', token);
 };
 
-export const getUserTokenOnLocalStorage = localStorage.getItem('token');
+export const getUserTokenOnLocalStorage = () => localStorage.getItem('token');
+export const clearUserTokenOnLocalStorage = () => localStorage.clear();
 
 export const isAuthenticated = () => {
   const token = !!localStorage.getItem('token');
