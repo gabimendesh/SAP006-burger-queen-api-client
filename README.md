@@ -12,7 +12,7 @@
 
 
 ## 1. Sobre o projeto 🍔
-Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
+The emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
 
 <h4> Visite nossa aplicação:  </h4>
 
