@@ -73,6 +73,8 @@
   color: var(--neon-green);
   text-align: center;
   margin: 2rem;
+  font-family: Fugaz One;
+  text-transform: uppercase;
 }
 
 .form-input {

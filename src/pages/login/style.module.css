@@ -1,3 +1,4 @@
+
 .logoArea {
   display: flex;
   justify-content: center;
@@ -53,6 +54,7 @@
   margin: 2rem;
   text-transform: uppercase;
   font-weight: 600;
+  font-family: Fugaz One;
 }
 
 .inputBox {
