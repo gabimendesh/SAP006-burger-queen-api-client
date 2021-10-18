@@ -1,6 +1,6 @@
-# Burger Queen (API Client)
-
-## Índice
+<h1 align="center">
+    <img src="https://raw.githubusercontent.com/mayarabezerra/SAP006-burger-queen-api-client/main/src/images/logo.png">
+</h1>
 
 - [1. Sobre o Projeto](#1-projeto)
 - [2. Protótipo](#2-prototipo)
@@ -8,22 +8,31 @@
 - [4. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [5. Autoras](#4-autoras)
 
----
+## 1. Sobre o projeto 🍔
+The emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
 
-## 1. Sobre o projeto
+<h4> Visite nossa aplicação:  </h4>
 
-Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
+|Login:                 ||
+| --------------------------- |------------------- |
+|E-mail: usuario@gmail.com     ||
+|Senha: 1234565                ||
+
 
 ## 2. Protótipo
-
 O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também foram realizados testes de usabilidade para usuários.
 
-//imagem protótipo
-//imagem paleta
+<h3> Página de Login e Cadastro <h3>
+<img src="https://user-images.githubusercontent.com/83085157/137774052-0069ccdd-db0c-4d55-b76a-9996c983375c.jpg" height="400">
+<h3> Página de Menu e Cozinha <h3>
+<img src="https://user-images.githubusercontent.com/83085157/137774321-8d2d8025-c75d-4a32-b48c-fa5a55262099.jpg" height="420">
+
+<h3> Paleta de Cores </h3>
+  <img src="https://user-images.githubusercontent.com/83085157/137596857-3926fcfa-10c6-4e80-8ea9-95cdf8ed5752.png" height="250">
 
 ## 3. Histórias do usuário
 
-#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
+#### [História de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
 
@@ -44,48 +53,15 @@ está pronto para ser entregue ao cliente.
 Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
 rapidamente aos clientes.
 
-## 4. Objetivos de aprendizagem
+## 4. Tecnologias
 
-- [ ] **Uso de HTML semântico**
-- [ ] **Uso de seletores de CSS**
-- [ ] **Empregar o modelo de caixa (box model): borda, margem, preenchimento**
-- [ ] **Uso de flexbox en CSS**
-- [ ] **Uso de CSS Grid Layout**
-- [ ] **Uso de media queries**
-- [ ] **Testes unitários**
-- [ ] **Testes assíncronos**
-- [ ] **Mocking**
-- [ ] **Uso ES modules**
-- [ ] **Uso de linter (ESLINT)**
-- [ ] **Uso de identificadores descritivos (Nomenclatura | Semântica)**
-- [ ] **Git: Instalação e configuração**
-- [ ] **Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)**
-- [ ] **Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)**
-- [ ] **GitHub: Criação de contas e repositórios, configuração de chave SSH**
-- [ ] **GitHub: Implantação com GitHub Pages**
-- [ ] **GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)**
-- [ ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
-- [ ] **Solicitações o requisições (request) e respostas (response).**
-- [ ] **Cabeçalhos (headers)**
-- [ ] **Corpo (body)**
-- [ ] **Verbos HTTP**
-- [ ] **Codigos de status de HTTP**
-- [ ] **Encodings e JSON**
-- [ ] **CORS (Cross-Origin Resource Sharing)**
-- [ ] **jsx**
-- [ ] **components**
-- [ ] **events**
-- [ ] **lists-and-keys**
-- [ ] **conditional-rendering**
-- [ ] **lifting-up-state**
-- [ ] **hooks**
-- [ ] **css-modules**
-- [ ] **routing**
-- [ ] **Desenhar a aplicação pensando e entendendo o usuário**
-- [ ] **Criar protótipos para obter feedback e iterar**
-- [ ] **Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)**
-- [ ] **Planejar e executar testes de usabilidade**
+- [ ] 
+- [ ] 
+- [ ] 
 
-## 5. AUTORAS:
+## 5. Autoras:
+Projeto desenvolvido durante o Bootcamp da **LABORATÓRIA.**
+<h3 align="center">
+<a style="color:aqua" href="https://github.com/gabimendesh" target="_blank">Gabrielly Mendes</a> e 
+<a style="color:aqua" href="https://github.com/mayarabezerra">Mayara Bezerra</a></h3>
 
-Projeto realizado para o Bootcamp da **LABORATÓRIA.**
