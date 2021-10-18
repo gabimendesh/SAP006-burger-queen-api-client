@@ -3,7 +3,7 @@ import Header from '../../components/header';
 import styles from './style.module.css';
 import { getUserTokenOnLocalStorage } from '../../services/localStorage';
 import { getOrders, updateOrder } from '../../services';
-import STATUS from '../../constants/constants';
+import status from '../../constants/constants';
 import { CardOrder } from '../../components/card';
 
 export default function Orders() {
@@ -22,7 +22,7 @@ export default function Orders() {
 
   const sortOrders = () => orders.sort((a, b) => b.id - a.id);
   const orderFilter = sortOrders().filter(
-    (order) => order.status === STATUS.DELIVERY || order.status === STATUS.DELIVERED,
+    (order) => order.status === status.delivery || order.status === status.delivered,
   );
 
   const update = (response, item) => {
@@ -35,8 +35,8 @@ export default function Orders() {
 
   const updateStatus = (item) => {
     const orderId = item.id;
-    if (item.status === STATUS.DELIVERY) {
-      updateOrder(orderId, STATUS.DELIVERED).then((response) => {
+    if (item.status === status.delivery) {
+      updateOrder(orderId, status.delivered).then((response) => {
         update(response, item);
       });
     }

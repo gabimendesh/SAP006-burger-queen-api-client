@@ -1,9 +1,9 @@
-const STATUS = {
-  PENDING: 'pending',
-  PREPARING: 'Preparando',
-  READY: 'Finalizado',
-  DELIVERY: 'Servir',
-  DELIVERED: 'Servido',
+const status = {
+  pending: 'pending',
+  preparing: 'Preparando',
+  ready: 'Finalizado',
+  delivery: 'Servir',
+  delivered: 'Servido',
 };
 
-export default STATUS;
+export default status;
