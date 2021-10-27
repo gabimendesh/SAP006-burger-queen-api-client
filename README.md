@@ -5,7 +5,7 @@
 - [1.Sobre o Projeto](#sobre-o-projeto)
 - [2.Protótipo](#prototipo)
 - [3.Histórias do usuário](#historias-do-usuario)
-- [4.Tecnologis](#tecnologias)
+- [4.Tecnologias](#tecnologias)
 - [5.Autoras](#autoras)
 
 
