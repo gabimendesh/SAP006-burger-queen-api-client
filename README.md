@@ -2,12 +2,14 @@
     <img src="https://raw.githubusercontent.com/mayarabezerra/SAP006-burger-queen-api-client/main/src/images/logo.png">
 </h1>
 
-- [1. Sobre o Projeto](#1-sobre-o-projeto)
-- [2. Protótipo](#2-prototipo)
-- [3. Histórias do usuário](#3-historias-do-usuario)
-- [4. Objetivos de aprendizagem](#4-objetivos-de-aprendizagem)
-- [5. Autoras](#5-autoras)
+- [1.Sobre o Projeto](#sobre-o-projeto)
+- [2.Protótipo](#prototipo)
+- [3.Histórias do usuário](#historias-do-usuario)
+- [4.Tecnologis](#tecnologias)
+- [5.Autoras](#autoras)
 
+
+<a id="sobre-o-projeto"></a>
 ## 1. Sobre o projeto 🍔
 The Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a interface surgiu a partir da necessidade do nosso cliente em atender a demanda de pedidos, foi solicitado uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente. O nome foi escolhido a partir do desejo de resgatar memórias, seus gostos musicais e estética.
 
@@ -24,7 +26,7 @@ The Emo's Burguer é um restaurante de hamburgueres que faz entregas 24 horas, a
 |Senha: salao123                ||
 
 
-
+<a id="prototipo"></a>
 ## 2. Protótipo
 O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também foram realizados testes de usabilidade para usuários.
 
@@ -36,6 +38,7 @@ O protótipo foi elaborado para que o funcionário o utilize pelo iPad, também 
 <h3> Paleta de Cores 🎨 </h3>
   <img src="https://user-images.githubusercontent.com/83085157/137596857-3926fcfa-10c6-4e80-8ea9-95cdf8ed5752.png" height="250">
 
+<a id="historias-do-usuario"></a>    
 ## 3. Histórias do usuário
 
 #### [História de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
@@ -59,6 +62,7 @@ está pronto para ser entregue ao cliente.
 Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
 rapidamente aos clientes.
 
+<a id="tecnologias"></a>
 ## 4. Tecnologias 💻
 - React JS
 - CSS modules
@@ -67,7 +71,8 @@ rapidamente aos clientes.
 - Git e Github 
 - HTTP
 - Figma
-
+    
+<a id="autoras"></a>
 ## 5. Autoras:
 Projeto desenvolvido durante o Bootcamp da **LABORATÓRIA.**
 <h3 align="center">
